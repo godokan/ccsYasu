@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+*{
+	box-sizing: border-box;
+}
+body {
+	background-color: #f0f0f0;
+}
+.box {
+	width: 100%;
+	height: 500px;
+	background: white;
+	border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	overflow: auto;
+	margin-bottom: 100px;
+	box-shadow: 10px 10px 10px 10px lightgray;
+}
+.box > a > p {
+	font-size: 25px;
+	margin-bottom: 30px;
+	font-weight: bold;
+	color: #262B8C;
+	letter-spacing: -1px;
+}
+h1 {
+	font-size: 80px;
+	font-weight: bold;
+	color: #262B8C;
+}
+h4 {
+	color: #262B8C;
+}
+.btn-white {
+	padding-top: 7px;
+	padding-bottom: 6.5px;
+}

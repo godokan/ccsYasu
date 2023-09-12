@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width" initial-scale="1">
+		<link rel="shortcut icon" href="/images/book-solid.svg">
+		<title>어바웃 송담</title>
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<link rel="stylesheet" href="/css/default.css">
+		<link rel="stylesheet" href="/css/board.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<botton type="botton" class="navbar-toggle collapsed" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1" aria-example="false">
+						<span class="sr-only"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</botton>
+					<a class="navbar-brand" href="/"><i class="fas fa-book"> 어바웃 송담</i></a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+							   aria-haspopup="true" aria-expanded="false">게시판<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="active"><a href="#">자유게시판</a></li>
+								<li><a href="#">새내기 게시판</a></li>
+								<li><a href="#">졸업생 게시판</a></li>
+							</ul>
+						</li>
+						<li><a href="#">맛집투어<span class="sr-only"></span></a></li>
+						<li><a href="#">멘토/멘티</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+							   aria-haspopup="true" aria-expanded="false">셔틀버스<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">수원</a></li>
+								<li><a href="#">새내기 게시판</a></li>
+								<li><a href="#">졸업생 게시판</a></li>
+							</ul>
+						</li>
+						<li><a href="#">학교 오픈 API</a></li>
+				    </ul>
+					<ul class="nav navbar-right">
+						<a href="#" class="btn-white"><i class="fas fa-envelope"></i></a>
+						<a href="my-page" class="btn-white"><i class="fas fa-user"></i></a>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div id="main-row" class="row">
+				<div id="main" class="col-md-9">
+					<div class="title">
+						API 목록
+						<a title="새로고침" class="reload" onClick="window.location.reload()"><i class="fas fa-redo-alt"></i></a>
+					</div>
+					<div class="writing-list">
+<!--
+						<%
+						var limt=10;
+						var limt = limt > rows.length ? rows.length : 10;
+						%> 
+						<%
+						for(var i=0; i < limt ; i++){
+						%>
+						<articla>
+							<a class="writing" href="#">
+								<%= rows[i].content %>
+							</a>
+						</articla>
+						<%
+						}
+						%>
+-->
+						<articla>
+							<a class="writing" href="#">
+								<div class="writing-data">
+									<p class="writing-user-time">
+										<time>
+											21/01/01
+										</time>
+									</p>
+									<p class="writing-contants">
+										내용
+									</p>
+									<p class="writing-comments">
+										<i class="far fa-thumbs-up">
+											0
+										</i>
+										<i class="far fa-comments">
+											0
+										</i>
+									</p>
+								</div>
+							</a>
+						</articla>
+						<div class="write-page">
+							<a href=""><i class="fas fa-angle-left"></i></a>
+							<a href="">1</a>
+							<a href="">2</a>
+							<a href="">3</a>
+							<a href="">4</a>
+							<a href="">5</a>
+							<a href=""><i class="fas fa-angle-right"></i></a>
+						</div>
+						<form id="search_form" method="post" action="free_search" onsubmit="return search_check()">
+							<div class="col-md-6">
+								<input id="free-search" name="free-search" type="text" class="form-control" placeholder="학교 오픈 API를 검색해보세요!">
+								<button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--<div id="right-side" class="col-md-3">
+					<div class="card">
+						<div class="bordered">
+							<h3>
+							<a href="#">HOT 게시물</a>
+							</h3>
+							<a class="card-list" href="#">
+								<time>07/06</time>
+								<p>테스트</p>
+							</a>
+							<a class="card-list" href="#">
+								<time>07/06</time>
+								<p>테스트</p>
+							</a>
+							<a class="card-list" href="#">
+								<time>07/06</time>
+								<p>테스트</p>
+							</a>
+							<a class="card-list" href="#">
+								<time>07/06</time>
+								<p>테스트</p>
+							</a>
+							<a class="card-list" href="#">
+								<time>07/06</time>
+								<p>테스트</p>
+							</a>
+						</div>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="/js/bootstrap.js"></script>
+		<script src="https://kit.fontawesome.com/e247bf4425.js" crossorigin="anonymous"></script>
+		<script>
+			function onDisplay() {
+				$('#new-write').show();
+				$('#write-btn').hide();
+			}
+			function offDisplay() {
+				$('#new-write').hide();
+				$('#write-btn').show();
+			}
+			function search_check() {
+				var search = document.getElementById('free-search').value;
+				
+				if (search == "") {
+					alert('검색어를 입력하세요!');
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
+		</script>
+	</body>
+</html>

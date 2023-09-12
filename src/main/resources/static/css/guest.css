@@ -1,0 +1,61 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* 게스트 페이지 CSS */
+
+.login { /* 왼쪽 메뉴 로그인 */
+	padding: 15px 10px 15px 10px;
+}
+.login > h3 { /* 로그인 카드 내용 */
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+.login > h3 > b { /* Guest 로그인 카드 문자볼드 색상 */
+	color: #262B8C;
+}
+.login-btn, 
+.login-btn:hover,
+.login-btn:focus { /* Guest 왼쪽 로그인 버튼 */
+	display: block;
+	height: 30px;
+	border: 1px solid lightgray;
+	background-color: #FFFFFF;
+	text-align: center;
+	color: #2E2E2E;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	vertical-align: middle;
+	padding-top: 3px;
+	text-decoration: none;
+}
+.sign-up-btn,
+.sign-up-btn:hover,
+.sign-up-btn:focus { /* Guest 왼쪽 회원가입 버튼 */
+	display: block;
+	height: 30px;
+	border: 1px solid #262B8C;
+	background-color: #262B8C;
+	text-align: center;
+	color: #FFFFFF;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	vertical-align: middle;
+	padding-top: 3px;
+	text-decoration: none;
+}
+.card-login { /* Guest 메인 카드 > 로그인 영역 */
+	display: block;
+	text-align: center;
+	padding: 63.5px 0px;
+	border-top: 1px solid lightgray;
+}
+.card-login > a,
+.card-login > a:hover,
+.card-login > a:focus { /* Guest 메인 카드 > 로그인 영역에 마우스 올렸을 때 */
+	display: inline-block;
+	padding: 5px 10px 3px;
+	margin: 0;
+	font-size: 12px;
+}

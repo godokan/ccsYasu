@@ -1,0 +1,263 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* 기본 태그 스타일 정의 */
+
+* { /* 모든 태그 기본 스타일 */
+	font-family: "Nanum Gothic";
+	margin: 0;
+	padding: 0;
+	letter-spacing: -1px;
+}
+a { /* a 태그 기본 스타일 */
+	color: #000000;
+	text-decoration: none;
+	font-weight: bold;
+}
+a:hover,
+a:focus { /* a 태그 마우스 올렸을 때 */
+	color: #000000;
+	text-decoration: none;
+	cursor: pointer;
+}
+p { /* p 태그 기본 스타일 */
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+/* 내비게이션 영역 */
+
+.navbar .navbar-nav { /* 내비게이션 정렬 */
+	display: inline-block;
+	float: none;
+	vertical-align: bottom;
+}
+.navbar .navbar-collapse { /* 내비게이션 정렬 */
+	text-align: center;
+}
+.navbar-default { /* 배경 색상 */
+	background-color: #ffffff;
+}
+.img-responsive {
+	width: 100% \9;
+}
+.navbar-default .navbar-brand { /* 내비게이션 제목 색상*/
+	color: #000000;
+}
+.navbar-brand > i { /* 브랜드 이미지 폰트아이콘 */
+	color: #262B8C;
+	font-size: 20px;
+	margin-left: 20px;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus { /* 내비게이션 제목에 마우스를 올렸을 때 */
+	background-color: transparent;
+	color: #000000;
+}
+.navbar-default .navbar-nav > li > a { /* 내비게이션 기본 색상 */
+	color: black;
+	text-decoration: none;
+	position: relative;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus { /* 현재 선택된 내비게이션 색상 */
+	color: #262B8C;
+	background-color: white;
+	border-bottom: 2px solid #262B8C;
+}
+.navbar-default .navbar-nav > li > a::after { /* 내비게이션 메뉴에 마우스 올렸을 때 애니메이션 */
+	content: "";
+	position: absolute;
+	bottom: -2px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 0;
+	height: 2px;
+	background: #262B8C;
+	transition: all .5s ease-out;
+}
+.navbar-default .navbar-nav > li > a:hover::after,
+.navbar-default .navbar-nav > li > a:focus::after { /* 내비게이션 메뉴에 마우스 올렸을 때 애니메이션 */
+	width: 100%;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus { /* 내비게이션 메뉴에 마우스 올렸을 때 */
+	color: #262B8C;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus { /* 드롭다운이 열렸을 때 */
+	color: #000000;
+	background-color: #ffffff;
+	text-decoration: none;
+}
+@media (max-width: 767px) { /* 해상도가 작을 때 드롭다운 색상 */
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a { /* 기본 색상 */
+		color: #000000;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus { /* 마우스 올렸을 때*/
+		color: #262B8C;
+	}
+}
+.navbar-right { /* 내비게이션 오른쪽 영역 */
+	padding: 8px;
+}
+
+/* 기본 아이템 */
+
+.container { /* 컨테이너 */
+	margin-top: 80px;
+}
+.btn-white { /* 기본 하얀색 버튼 */
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 1px;
+	margin-left: 5px;
+	background-color: #ffffff;
+	color: #000000;
+	text-decoration: none;
+	padding: 8px;
+	padding-left: 13px;
+	padding-right: 13px;
+	border: solid 1px lightgray;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.btn-white:hover,
+.btn-white:focus { /* 기본 하얀색 버튼 마우스 올렸을 때 */
+	background-color: lightgray;
+}
+.btn-navy { /* 기본 남색 버튼 */
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 1px;
+	margin-left: 5px;
+	background-color: #262B8C;
+	color: #ffffff;
+	text-decoration: none;
+	padding: 8px;
+	padding-left: 13px;
+	padding-right: 13px;
+	border: solid 1px #262B8C;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.btn-navy:hover,
+.btn-navy:focus { /* 기본 남색 버튼 마우스 올렸을 때 */ 
+	background-color: lightgray;
+	border-color: lightgray;
+}
+.card { /* 카드 기본 속성 */
+	display: block;
+	background-color: #FFFFFF;
+	border: 1px solid lightgray;
+	width: 100%;
+	margin: 2.5px;
+	float: left;
+}
+.card > .bordered > h3 ,
+.card > .bordered > h3 > a { /* 카드 > 제목 영역 */
+	font-size: 14px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	margin: 0;
+	color: #262B8C;
+	font-weight: bold;
+}
+.card-btn { /* 카드 > 버튼 속성 */
+	text-align: center;
+	display: block;
+	margin: 10px;
+	padding: 10px;
+}
+.card-list { /* 카드 > 리스트 영역 */
+	height: 40px;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	border-top: 1px solid lightgray;
+	margin: 0;
+	padding: 10px;
+}
+.card-list:hover { /* 카드 > 리스트 마우스 올렸을 때 */
+	background-color: #EDEDED;
+}
+.card-list > p { /* 카드 > 리스트 > 글씨 영역 */
+	color: #333333;
+	float: left;
+}
+.card-list > time { /* 카드 > 리스트 > 시간 영역 */
+	font-size: 11px;
+	color: #888888;
+	float: right;
+	margin-top: 2.5px;
+	margin-left: 10px;
+}
+.card-list > i { /* 카드 > 리스트 > 아이콘 속성 */
+	margin-right: 5px;
+}
+#main > .col-md-6 { /* 메인 영역 기본 사이즈 */
+	padding: 2.5px;
+}
+#left-side,
+#right-side { /* 양옆 기본 사이즈 */
+	padding-left: 17.5px;
+	padding-right: 17.5px;
+}
+#left-side > .card,
+#right-side > .card { /* 양옆 카드 속성 */
+	background-color: #F0F0F0;
+	margin-bottom: 5px;
+}
+#left-side > .card > .bordered > .card-list:hover,
+#right-side > .card > .bordered > .card-list:hover { /* 양옆 카드 > 리스트 마우스 올렸을 때 */
+	background-color: #FFFFFF;
+}
+#search_form > .col-md-12 { /* 메인페이지 검색 영역 사이즈 */
+	margin: 5px 0px;
+	padding: 0;
+	padding-left: 5px;
+	height: 34px;
+}
+.form-control { /* 메인페이지 검색 영역 속성 */
+	margin-right: 0px;
+	border-radius: 0px;
+	float: left;
+	width: 92%;
+	background-color: white;
+	border: 1.5px solid lightgray;
+	box-shadow: none;
+}
+#search_form:hover .search-icon,
+#search_form:focus .search-icon { /* 메인페이지 검색 버튼 마우스 올렸을 때 */
+	background-color: #262B8C;
+	padding: 6px;
+	font-size: 17px;
+}
+.form-control:hover,
+.form-control:focus { /* 메인페이지 검색 영역 마우스 올렸을 때 */
+	border-color: #262B8C;
+}
+.search-icon { /* 메인페이지 검색 버튼 */
+	width: 8%;
+	height: 34px;
+	text-align: center;
+	vertical-align: middle;
+	float: left;
+	display: block;
+	margin: 0;
+	padding: 8px;
+	color: #FFFFFF;
+	background-color: lightgray;
+	border: 0;
+}
+.search-error { /* 검색 결과 없을 때 */
+	padding: 15px;
+	font-weight: bold;
+	font-size: 15px;s
+	cursor: default;
+	color: red;
+}

@@ -1,0 +1,208 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* 게시판 CSS */
+
+.title {
+	border: 1px solid lightgray;
+	padding: 15px;
+	font-size: 20px;
+	color: #262B8C;
+	font-weight: bold;
+	margin-bottom: 10px;
+	margin-top: 2.5px;
+}
+.reload {
+	float: right;
+	text-align: center;
+	display: block;
+	border: 1px solid lightgray;
+	width: 30px;
+	height: 30px;
+}
+.reload:hover,
+.reload:focus {
+	background-color: #f0f0f0;
+}
+.reload > i {
+	vertical-align: middle;
+	font-size: 15px;
+	color: #5A5A5A;
+}
+.reload > i:hover,
+.reload > i:focus {
+	color: #262B8C;
+}
+.writing-list{
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+#write-btn ,
+#new-write {
+	font-size: 15px;
+	box-shadow: none;
+	margin-bottom: 10px;
+	border: 3px solid lightgray;
+	border-radius: 0px;
+	padding: 0px;
+	outline: 0px;
+}
+#write-btn {
+	width: 100%;
+	padding: 10px;
+}
+#write-btn:hover,
+#write-btn:focus {
+	border: 3px solid #262B8C;
+}
+#new-write:hover,
+#new-write:focus {
+	border: 3px solid #262B8C;
+}
+.write-title,
+.write-main,
+.write-bottom {
+	display: block;
+	margin: 0px;
+	padding: 15px;
+}
+.write-title {
+	border-bottom: 1px solid lightgray;
+}
+.write-main{
+	height: 150px;
+}
+.new-writing,
+.new-writing:hover,
+.new-writing:focus {
+	display: inline-block;
+	width: 100%;
+	height: 120px;
+	margin: 0px;
+	border: none;
+	outline: none;
+	text-transform: none;
+	text-rendering: auto;
+	resize: none;
+}
+.write-options {
+	height: 40px;
+	border-top: 1px solid lightgray;
+	background-color: #F0F0F0;
+	padding: 0px;
+	margin: 0px;
+	margin-right: -0.5px;
+}
+.write-options > li,
+.write-options > button {
+	width: 40px;
+	height: 40px;
+	padding: 5px;
+	cursor: pointer;
+	list-style: none;
+	border-style: none;
+}
+.image-insert {
+	float: left;
+}
+.write-end {
+	background-color: #262B8C;
+	float: right;
+}
+.anonym-user {
+	float: right;
+}
+.write-options > li > center > i {
+	font-size: 20px;
+}
+.fa-images,
+.fa-pen-nib {
+	line-height: inherit!important;
+}
+.fa-pen-nib {
+	color: white;
+}
+articla {
+	display: block;
+	width: 100%;
+	border: 1px solid lightgray;
+	margin: 0;
+	padding: 0;
+	margin-bottom: -1px;
+}
+.writing-data {
+	display: block;
+}
+.writing-user-time {
+	text-align: left;
+	font-size: 13px;
+}
+.writing-user-time > i {
+	text-align: center;
+	padding: 6px 1px 0px 0px;
+	margin-right: 2px;
+	width: 20px;
+	height: 20px;
+	font-size: 15px;
+	color: white;
+	background-color: lightgray;
+	border-radius: 3px;
+}
+.writing-user-time > time {
+	margin-left: 5px;
+	color: gray;
+	font-weight: normal;
+}
+.writing-contants {
+	text-align: left;
+	font-size: 15px;
+	font-weight: normal;
+}
+.writing-comments {
+	text-align: right;
+	margin-bottom: 0px;
+	margin-right: 5px;
+}
+.writing-comments > .fa-thumbs-up {
+	color: #BB0000;
+	margin-right: 10px;
+}
+.writing-comments > .fa-comments {
+	color: royalblue;
+}
+.writing {
+	margin: 0;
+	padding: 15px;
+	display: block;
+}
+.writing:hover,
+.writing:focus {
+	text-decoration: none;
+	color: #000000;
+	background-color: #F0F0F0;
+}
+#search_form > .col-md-6 {
+	margin-left: 0px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+	padding-left: 0px;
+}
+.write-page {
+	float: right;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 5px;
+	padding: 5px;
+	font-size: 15px;
+}
+.write-page > a {
+	display: inline-block;
+	padding: 5px;
+	color: dimgray;
+	text-decoration: none;
+}
+.write-page > a:hover,
+.write-page > a:focus {
+	color: #262B8C;
+}
