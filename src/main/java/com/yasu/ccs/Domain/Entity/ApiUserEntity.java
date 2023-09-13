@@ -1,64 +1,31 @@
 package com.yasu.ccs.Domain.Entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "api_user", schema = "ccsyasu_db", catalog = "")
+@Table(name = "api_user", schema = "ccsyasu_db")
+@Getter
+@NoArgsConstructor
 public class ApiUserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "no", nullable = false)
-    private int no;
-    @Basic
+    private Integer no;
+
     @Column(name = "api_key", nullable = false, length = 100)
     private String apiKey;
-    @Basic
-    @Column(name = "stud_num", nullable = false)
-    private int studNum;
 
-    public int getNo() {
-        return no;
-    }
+    @ManyToOne(cascade = CascadeType.REMOVE, targetEntity = CcsUserEntity.class)
+    @JoinColumn(name = "stud_num", referencedColumnName = "stud_num", insertable = false, updatable = false)
+    private CcsUserEntity studNum;
 
-    public void setNo(int no) {
+    @Builder
+    public ApiUserEntity(Integer no, String apiKey, CcsUserEntity studNum) {
         this.no = no;
-    }
-
-    public String getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
-    }
-
-    public int getStudNum() {
-        return studNum;
-    }
-
-    public void setStudNum(int studNum) {
         this.studNum = studNum;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ApiUserEntity that = (ApiUserEntity) o;
-
-        if (no != that.no) return false;
-        if (studNum != that.studNum) return false;
-        if (apiKey != null ? !apiKey.equals(that.apiKey) : that.apiKey != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = no;
-        result = 31 * result + (apiKey != null ? apiKey.hashCode() : 0);
-        result = 31 * result + studNum;
-        return result;
     }
 }
