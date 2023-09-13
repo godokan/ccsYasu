@@ -1,6 +1,7 @@
 package com.yasu.ccs.Domain.Entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "board_free", schema = "ccsyasu_db")
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardFreeEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)

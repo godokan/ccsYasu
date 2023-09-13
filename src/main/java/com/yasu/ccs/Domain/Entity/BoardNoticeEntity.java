@@ -1,13 +1,14 @@
 package com.yasu.ccs.Domain.Entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "board_notice", schema = "ccsyasu_db")
 public class BoardNoticeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
