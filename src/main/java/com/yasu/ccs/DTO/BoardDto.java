@@ -5,27 +5,26 @@ import com.yasu.ccs.Domain.Entity.BoardNoticeEntity;
 import com.yasu.ccs.Domain.Entity.CcsUserEntity;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NonNull;
 
 @Data
 public class BoardDto {
     @NonNull
     private Integer no;
-    private Integer stud_num;
+    private Integer studNum;
     private String context;
 
     @Builder
-    public BoardDto(@NonNull Integer no, Integer stud_num, String context) {
+    public BoardDto(@NonNull Integer no, Integer studNum, String context) {
         this.no = no;
-        this.stud_num = stud_num;
+        this.studNum = studNum;
         this.context = context;
     }
 
     public BoardFreeEntity toBoardFreeEntity() {
         return BoardFreeEntity.builder()
                 .no(no)
-                .studNum(CcsUserEntity.builder().studNum(this.stud_num).build())
+                .studNum(CcsUserEntity.builder().studNum(this.studNum).build())
                 .context(context)
                 .build();
     }
@@ -33,7 +32,7 @@ public class BoardDto {
     public BoardNoticeEntity toBoardNoticeEntity() {
         return BoardNoticeEntity.builder()
                 .no(no)
-                .studNum(CcsUserEntity.builder().studNum(this.stud_num).build())
+                .studNum(CcsUserEntity.builder().studNum(this.studNum).build())
                 .context(context)
                 .build();
     }
