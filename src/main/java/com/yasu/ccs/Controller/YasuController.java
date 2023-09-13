@@ -13,27 +13,24 @@ public class YasuController {
             return "redirect:/home";
     }
 
-    @GetMapping("home")
+    // GET Method
+
+    @GetMapping("/home")
     public String home(Model model) {
         return "index";
     }
 
-    @GetMapping("login")
-    public String login(Model model) {
-        return "login";
-    }
-
-    @GetMapping("signup")
+    @GetMapping("/signup")
     public String signup(Model model) {
         return "signup";
     }
 
-    @GetMapping("notice")
+    @GetMapping("/notice")
     public String notice(Model model) {
         return "notice-board";
     }
 
-    @GetMapping("freeboard")
+    @GetMapping("/freeboard")
     public String freeBoard(Model model) {
         return "free-board";
     }
