@@ -7,7 +7,7 @@ import lombok.NonNull;
 @Data
 public class ApiUserDto {
     @NonNull
-    Integer no;
-    String api_key;
-    Integer stud_num;
+    private Integer no;
+    private String api_key;
+    private Integer stud_num;
 }

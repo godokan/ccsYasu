@@ -7,7 +7,7 @@ import lombok.NonNull;
 @Data
 public class BoardCommentDto {
     @NonNull
-    Integer no;
-    Integer board_no;
-    String context;
+    private Integer no;
+    private Integer board_no;
+    private String context;
 }

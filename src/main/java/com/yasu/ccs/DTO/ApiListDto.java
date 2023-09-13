@@ -7,8 +7,8 @@ import lombok.NonNull;
 @Data
 public class ApiListDto {
     @NonNull
-    Integer no;
-    String name;
-    String description;
-    String id;
+    private Integer no;
+    private String name;
+    private String description;
+    private String id;
 }
