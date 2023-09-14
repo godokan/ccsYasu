@@ -60,11 +60,11 @@
 
     function loginPost() {
 
-        var obj = { "id": document.getElementById("user-id").value,
-                    "pw": document.getElementById("user-pw").value };
+        var obj = { "id": document.getElementById("user_id").value,
+                    "pw": document.getElementById("user_pw").value };
 
         $.ajax({
-            url: "<c:url value="/loginPost"/>",
+            url: "/loginPost",
             type: "post",
             data: JSON.stringify(obj),
             dataType: "json",
