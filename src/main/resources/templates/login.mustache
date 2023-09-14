@@ -37,32 +37,9 @@
     </div>
 </div>
 <script>
-    let id = $('#user_id');
-    let pw = $('#user_pw');
-    let btn = $('#btn');
-
-<!--    $(btn).on('click', function() {-->
-<!--        if($(id).val() == "") {-->
-<!--            $(id).next('label').addClass('warning');-->
-<!--            setTimeout(function() {-->
-<!--                $('label').removeClass()-->
-<!--            }, 1500);-->
-<!--        }-->
-<!--        else if($(pw).val() == "") {-->
-<!--            $(pw).next('label').addClass('warning');-->
-<!--            setTimeout(function() {-->
-<!--                $('label').removeClass()-->
-<!--            }, 1500);-->
-<!--        }-->
-<!--    });-->
-
-
-
     function loginPost() {
-
         var obj = { "id": document.getElementById("user_id").value,
                     "pw": document.getElementById("user_pw").value };
-
         $.ajax({
             url: "/loginPost",
             type: "post",
