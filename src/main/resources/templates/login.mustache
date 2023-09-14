@@ -56,9 +56,13 @@
 <!--        }-->
 <!--    });-->
 
-    var obj = { "id": id, "pw": pw };
+
 
     function loginPost() {
+
+        var obj = { "id": document.getElementById("user-id").value,
+                    "pw": document.getElementById("user-pw").value };
+
         $.ajax({
             url: "<c:url value="/loginPost"/>",
             type: "post",
