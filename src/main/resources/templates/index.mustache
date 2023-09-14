@@ -1,0 +1,118 @@
+{{>layout/header}}
+{{>layout/navbar}}
+
+<div class="container">
+    <div id="main-row" class="row">
+        <div id="left-side" class="col-md-3">
+            <div class="card">
+                <form class="login">
+                    <h3 class="text-center">
+                        커뮤니티 이용은<br>
+                        <b>로그인</b>
+                        이 필요합니다.
+                    </h3>
+                    <a href="login" class="login-btn">로그인</a>
+                    <a href="signup" class="sign-up-btn">회원가입</a>
+                </form>
+            </div>
+        </div>
+        <div id="main" class="col-md-6">
+            <form id="search_form">
+                <div class="col-md-12">
+                    <input id="main-search" name="main-search" type="text" class="form-control" placeholder="전체 게시판의 글을 검색해보세요!">
+                    <button type="submit" class="search-icon"><i class="fas fa-search" onclick="search_check()"></i></button>
+                </div>
+            </form>
+            <div id="main-left-incard" class="col-md-6">
+                <div class="card">
+                    <div class="bordered">
+                        <h3>
+                            <a href="#">공지사항</a>
+                        </h3>
+                        <a class="card-list" href="#">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="#">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="#">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="#">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="#">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div id="main-right-incard" class="col-md-6">
+                <div class="card">
+                    <div class="bordered">
+                        <h3>
+                            <a href="#">자유게시판</a>
+                        </h3>
+                        <a class="card-list" href="#">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="#">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="#">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="#">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="#">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="right-side" class="col-md-3">
+            <div class="card">
+                <div class="bordered">
+                    <h3>
+                        <a href="#">HOT 게시물</a>
+                    </h3>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{>layout/footer}}
