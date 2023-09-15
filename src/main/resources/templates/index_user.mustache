@@ -1,0 +1,253 @@
+{{>layout/header}}
+
+    <link rel="stylesheet" href="/css/user_index.css">
+</head>
+<body>
+
+{{>layout/navbar}}
+
+<div class="container">
+    <div id="main-row" class="row">
+        <div id="left-side" class="col-md-3">
+            <div class="card">
+                <form id="user-data" class="login" action="user-data" method="get">
+                    <h3 class="text-center">
+                        <i id="card-user-icon" class="fas fa-user"></i>
+                    </h3>
+                    <p name="user_hakbon" id="user_hakbon" class="h3"><%= hakbon %></p>
+                    <p name="user_nickname"id="user_nickname" class="h5" ><%= nickname %></p>
+                    <p name="user_name" id="user_name" class="h5" ><%= name %></p>
+                    <p name="user_id" id="user_id" class="h5" ><%= id %></p>
+                </form>
+                <form id="logout" class="login" action="/" method="post">
+                    <div class="card-btn">
+                        <a href="#" id="mypage_btn" class="btn-white">내 정보</a>
+                        <button type="submit" id="logout_btn" class="btn-white">로그아웃</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card">
+                <div class="bordered">
+                    <h3>
+                        <a>내 메뉴</a>
+                    </h3>
+                    <a class="card-list" href="#"><i class="fas fa-list-ul"></i>내가 쓴 글</a>
+                    <a class="card-list" href="#"><i class="far fa-comment-dots"></i>댓글 단 글</a>
+                    <a class="card-list" href="#"><i class="far fa-bookmark"></i>내 스크랩</a>
+                </div>
+            </div>
+        </div>
+        <div id="main" class="col-md-6">
+            <form id="search_form">
+                <div class="col-md-12">
+                    <input id="main-search" name="main-search" type="text" class="form-control" placeholder="전체 게시판의 글을 검색해보세요!">
+                    <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <div id="main-left-incard" class="col-md-6">
+                <div class="card">
+                    <div class="bordered">
+                        <h3>
+                            <a href="login">자유게시판</a>
+                        </h3>
+                        <%
+                        var limt=10;
+                        var limt = limt > rows.length ? rows.length : 5;
+                        %>
+                        <%
+                        for(var i=0; i < limt ; i++){
+                        %>
+                        <a class="card-list" href="#">
+                            <time><%= rows[i].date %></time>
+                            <p><%= rows[i].content %></p>
+                        </a>
+                        <%
+                        }
+                        %>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="bordered">
+                        <h3>
+                            <a href="login">졸업생게시판</a>
+                        </h3>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="bordered">
+                        <h3>
+                            <a href="login">동아리ㆍ학회</a>
+                        </h3>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="main-right-incard" class="col-md-6">
+                <div class="card">
+                    <div class="bordered">
+                        <h3>
+                            <a href="login">새내기게시판</a>
+                        </h3>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="bordered">
+                        <h3>
+                            <a href="login">정보게시판</a>
+                        </h3>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="bordered">
+                        <h3>
+                            <a href="login">장터게시판</a>
+                        </h3>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                        <a class="card-list" href="login">
+                            <time>07/06</time>
+                            <p>테스트</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="right-side" class="col-md-3">
+            <div class="card">
+                <div class="bordered">
+                    <h3>
+                        <a href="login">HOT 게시물</a>
+                    </h3>
+                    <a class="card-list" href="login">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="login">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="login">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="login">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="login">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function search_check() {
+        var search = document.getElementById('main-search').value;
+
+        if (search == "") {
+            alert('검색어를 입력하세요!');
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+
+{{>layout/footer}}

@@ -1,0 +1,109 @@
+{{>layout/header}}
+
+    <link rel="stylesheet" href="/css/writing.css">
+</head>
+<body>
+
+{{>layout/navbar}}
+
+<div class="container">
+    <div id="main-row" class="row">
+        <div id="main" class="col-md-9">
+            <div class="title">
+                자유게시판
+                <a title="새로고침" class="reload" onClick="window.location.reload()"><i class="fas fa-redo-alt"></i></a>
+            </div>
+            <div class="writing-list">
+                <div id="new-write" class="new-write" style="display: none">
+                    <form action="" method="post">
+                        <p class="write-title">
+                            자유게시판
+                        </p>
+                    </form>
+                </div>
+                <articla>
+                    <a class="writing">
+                        <div class="writing-data">
+                            <div class="writing-user-time">
+                                <i class="fas fa-user"></i>
+                                익명
+                                <time>
+                                    21/01/01
+                                </time>
+                            </div>
+                            <p class="writing-contants">
+                                내용
+                            </p>
+                            <p class="writing-comments">
+                                <i class="far fa-thumbs-up">
+                                    0
+                                </i>
+                                <i class="far fa-comments">
+                                    0
+                                </i>
+                            </p>
+                        </div>
+                        <form method="post">
+                            <button type="submit" class="btn-white">좋아요</button>
+                        </form>
+                        <form method="post">
+                            <div class="write-options">
+                                <input type="text" name="comments" class="new-writing" placeholder="댓글을 작성해보세요!" maxlength="300">
+                                <button type="submit" class="write-end"><center><i class="fas fa-pen-nib"></i></center></button>
+                            </div>
+                        </form>
+                    </a>
+                </articla>
+            </div>
+        </div>
+        <div id="right-side" class="col-md-3">
+            <div class="card">
+                <div class="bordered">
+                    <h3>
+                        <a href="#">HOT 게시물</a>
+                    </h3>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function onDisplay() {
+        $('#new-write').show();
+        $('#write-btn').hide();
+    }
+    function search_check() {
+        var search = document.getElementById('free-search').value;
+
+        if (search == "") {
+            alert('검색어를 입력하세요!');
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+
+{{>layout/footer}}

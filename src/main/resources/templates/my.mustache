@@ -1,0 +1,92 @@
+{{>layout/header}}
+
+    <link rel="stylesheet" href="/css/my-page.css">
+</head>
+<body>
+
+{{>layout/navbar}}
+
+<div class="container">
+    <div id="main-row" class="row">
+        <div id="left-side" class="col-md-3">
+        </div>
+        <div id="main" class="col-md-6">
+            <div class="card">
+                <div class="card-title">
+                    <h3>
+                        내 정보
+                    </h3>
+                    <form id="logout" class="login" action="/" method="post">
+                        <button type="submit" id="logout_btn" class="btn-navy">로그아웃</button>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <p>
+                        <i class="fas fa-user"></i>
+                    </p>
+                    <h5>
+                        닉네임
+                    </h5>
+                    <h5>
+                        이름 / 아이디
+                    </h5>
+                    <h5>
+                        학과 / 학번
+                    </h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <h3>
+                        계정
+                    </h3>
+                </div>
+                <a class="card-list">
+                    닉네임 변경
+                </a>
+                <a class="card-list">
+                    학교 인증
+                </a>
+                <a class="card-list">
+                    비밀번호 변경
+                </a>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <h3>
+                        이용안내
+                    </h3>
+                </div>
+                <a class="card-list">
+                    커뮤니티 이용규칙
+                </a>
+                <a class="card-list">
+                    이용 제한 내역
+                </a>
+            </div>
+            <div class="card">
+                <div class="card-title">
+                    <h3>
+                        고객센터
+                    </h3>
+                </div>
+                <a class="card-list">
+                    문의하기
+                </a>
+                <a class="card-list">
+                    공지사항
+                </a>
+                <a class="card-list">
+                    서비스 이용약관
+                </a>
+                <a class="card-list">
+                    개인정보 처리방침
+                </a>
+            </div>
+        </div>
+        <div id="right-side" class="col-md-3">
+        </div>
+    </div>
+</div>
+
+{{>layout/footer}}

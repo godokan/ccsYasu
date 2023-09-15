@@ -1,4 +1,9 @@
 {{>layout/header}}
+
+<link rel="stylesheet" href="/css/guest.css">
+</head>
+<body>
+
 {{>layout/navbar}}
 
 <div class="container">
@@ -114,5 +119,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    function search_check() {
+        var search = document.getElementById('main-search').value;
+
+        if (search == "") {
+            alert('검색어를 입력하세요!');
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
 
 {{>layout/footer}}
