@@ -15,7 +15,6 @@ public class LoginController {
         return "login";
     }
 
-    @ResponseBody
     @PostMapping("/loginPost")
     public String  loginPost(@RequestBody Map<String,Object> map) {
         System.out.println(map);
