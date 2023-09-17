@@ -51,7 +51,10 @@
             dataType: "text",
             contentType: "application/json",
             success: function(data) {
-                alert("성공");
+                if (data === "OK") {
+                    alert("성공");
+                    location.href = "/home";
+                }
             },
             error: function(errorThrown) {
                 alert(errorThrown.statusText);
