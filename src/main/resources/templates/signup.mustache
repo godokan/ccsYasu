@@ -48,7 +48,7 @@
                         <span id="hakbon_check_msg"></span>
                     </div>
                     <div class="submit-btn">
-                        <button id="btn" type="submit">회원가입</button>
+                        <button id="btn" type="button" onclick="signupPost()">회원가입</button>
                     </div>
                 </div>
             </div>
@@ -209,10 +209,13 @@
             url: "/signupPost",
             type: "post",
             data: JSON.stringify(obj),
-            dataType: "json",
+            dataType: "text",
             contentType: "application/json",
             success: function(data) {
-                alert("성공");
+                if (data === "OK") {
+                    alert("성공");
+                    location.href = "/home";
+                }
             },
             error: function(errorThrown) {
                 alert(errorThrown.statusText);
