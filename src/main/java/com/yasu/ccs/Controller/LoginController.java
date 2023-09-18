@@ -15,10 +15,10 @@ public class LoginController {
         return "login";
     }
 
-    @ResponseBody
     @PostMapping("/loginPost")
-    public String  loginPost(@RequestBody Map<String,Object> map) {
-        System.out.println(map);
-        return "redirect:/home";
+    @ResponseBody
+    public String loginPost(@RequestBody Map<String, Object> user) {
+        System.out.println(user);
+        return "OK";
     }
 }
