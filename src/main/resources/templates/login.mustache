@@ -48,10 +48,15 @@
             url: "/loginPost",
             type: "post",
             data: JSON.stringify(obj),
-            dataType: "json",
+            dataType: "text",
             contentType: "application/json",
             success: function(data) {
-                alert("성공");
+                if (data === "OK") {
+                    alert("성공");
+                    location.href = "/home";
+                } else if (data === "ERR") {
+                    alert("로그인 실패")
+                }
             },
             error: function(errorThrown) {
                 alert(errorThrown.statusText);
