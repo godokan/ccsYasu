@@ -11,8 +11,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CcsUserEntity {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "no", unique = true, nullable = false)
+    private Integer no;
+
     @Column(name = "stud_num", unique = true, nullable = false)
     private Integer studNum;
 

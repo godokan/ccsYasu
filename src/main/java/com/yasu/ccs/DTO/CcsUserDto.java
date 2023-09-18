@@ -3,18 +3,16 @@ package com.yasu.ccs.DTO;
 import com.yasu.ccs.Domain.Entity.CcsUserEntity;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NonNull;
 
 @Data
 public class CcsUserDto {
-    @NonNull
     private Integer studNum;
     private String id;
     private String pw;
     private String name;
 
     @Builder
-    public CcsUserDto(@NonNull Integer studNum, String id, String pw, String name) {
+    public CcsUserDto(Integer studNum, String id, String pw, String name) {
         this.studNum = studNum;
         this.id = id;
         this.pw = pw;
@@ -22,7 +20,6 @@ public class CcsUserDto {
     }
 
     public CcsUserEntity toEntity() {
-        System.out.println("CcsUserEntity toEntity()");
         return CcsUserEntity.builder()
                 .studNum(studNum)
                 .id(id)
