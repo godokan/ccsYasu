@@ -20,11 +20,6 @@ public class YasuController {
         return "index";
     }
 
-    @GetMapping("/signup")
-    public String signup(Model model) {
-        return "signup";
-    }
-
     @GetMapping("/notice")
     public String notice(Model model) {
         return "notice-board";
