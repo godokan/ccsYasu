@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-3">
         </div>
-        <form action="" method="post" onsubmit="return check_all()">
+        <form action="/signupPost" method="post" onsubmit="return check_all()">
             <div class="col-md-6">
                 <div class="box">
                     <a href="/"><p><i class="fas fa-book"></i> 어바웃 송담</p></a>
@@ -199,6 +199,25 @@
         }
 
         return true;
+    }
+    function signupPost() {
+        var obj = { "id": document.getElementById("user_id").value,
+                    "pw": document.getElementById("user_pw").value,
+                    "nickname": document.getElementById("user_nickname").value,
+                    "hackbon": document.getElementById("user_hakbon").value };
+        $.ajax({
+            url: "/signupPost",
+            type: "post",
+            data: JSON.stringify(obj),
+            dataType: "json",
+            contentType: "application/json",
+            success: function(data) {
+                alert("성공");
+            },
+            error: function(errorThrown) {
+                alert(errorThrown.statusText);
+            }
+        });
     }
 </script>
 
