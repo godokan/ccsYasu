@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class YasuController {
 
-    @RequestMapping("/")
-    public String index() {
-            return "redirect:/home";
-    }
+//    @RequestMapping("/")
+//    public String index() {
+//            return "redirect:/home";
+//    }
 
     // GET Method
 

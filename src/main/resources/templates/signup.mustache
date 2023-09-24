@@ -23,7 +23,7 @@
                         <input type="text" name="user_id" id="user_id" autocomplete="off" onfocus="onDisplay()" onKeyUp="id_check()" required>
                         <label for="user_id">아이디</label>
                         <div id="id_check_btn" class="check-area" style="display: none">
-                            <button type="submit" class="btn-navy">중복확인</button>
+                            <button type="button" class="btn-navy">중복확인</button>
                         </div>
                         <span id="id_check_msg"></span>
                     </div>
@@ -200,6 +200,7 @@
 
         return true;
     }
+
     function signupPost() {
         var obj = { "id": document.getElementById("user_id").value,
                     "pw": document.getElementById("user_pw").value,
