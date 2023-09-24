@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="submit-btn">
-                        <button id="submit-btn" type="button">로그인</button>
+                        <button id="submit-btn" type="submit">로그인</button>
                     </div>
                 </div>
             </form>
@@ -42,22 +42,22 @@
     </div>
 </div>
 <script>
-    var id_input = document.getElementById("user_id");
-    var pw_input = document.getElementById("user_pw");
+<!--    var id_input = document.getElementById("user_id");-->
+<!--    var pw_input = document.getElementById("user_pw");-->
 
-    id_input.addEventListener("keyup", function (event) {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        document.getElementById("submit-btn").click();
-      }
-    });
+<!--    id_input.addEventListener("keyup", function (event) {-->
+<!--      if (event.keyCode === 13) {-->
+<!--        event.preventDefault();-->
+<!--        document.getElementById("submit-btn").click();-->
+<!--      }-->
+<!--    });-->
 
-    pw_input.addEventListener("keyup", function (event) {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        document.getElementById("submit-btn").click();
-      }
-    });
+<!--    pw_input.addEventListener("keyup", function (event) {-->
+<!--      if (event.keyCode === 13) {-->
+<!--        event.preventDefault();-->
+<!--        document.getElementById("submit-btn").click();-->
+<!--      }-->
+<!--    });-->
 
     function loginPost() {
         var obj = { "id": document.getElementById("user_id").value,
