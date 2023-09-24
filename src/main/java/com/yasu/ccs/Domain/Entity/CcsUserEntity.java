@@ -1,5 +1,6 @@
 package com.yasu.ccs.Domain.Entity;
 
+import com.yasu.ccs.DTO.CcsUserDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -34,5 +35,14 @@ public class CcsUserEntity {
         this.id = id;
         this.pw = pw;
         this.name = name;
+    }
+
+    public CcsUserDto toDto() {
+        return CcsUserDto.builder()
+                .studNum(studNum)
+                .id(id)
+                .pw(pw)
+                .name(name)
+                .build();
     }
 }

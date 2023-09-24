@@ -17,19 +17,18 @@ public class UserService {
 
     CcsUserEntity userEntity;
 
-    public boolean login(CcsUserDto userDto) {
-        boolean flag = false;
+    public CcsUserDto login(CcsUserDto userDto) {
+        CcsUserDto findDto = null;
         try {
             userEntity = userDto.toEntity();
             CcsUserEntity findEntity = userRepository.findCcsUserEntityByIdAndPw(userEntity.getId(), userEntity.getPw());
             if (Objects.equals(userEntity.getId(), findEntity.getId()) && Objects.equals(userEntity.getPw(), findEntity.getPw()))
-                flag = true;
-        } catch (NullPointerException e) {
-            return false;
+                findDto = findEntity.toDto();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("유저 정보 없음");
+            return null;
         }
-        return flag;
+        return findDto;
     }
 
     public boolean signIn(CcsUserDto userDto) {
