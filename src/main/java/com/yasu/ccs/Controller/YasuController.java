@@ -1,20 +1,22 @@
 package com.yasu.ccs.Controller;
 
+import com.yasu.ccs.DTO.AlertDto;
 import com.yasu.ccs.DTO.CcsUserDto;
 import com.yasu.ccs.SessionConst;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Controller
 public class YasuController {
     @Autowired
     HttpSession session;
     CcsUserDto userDto;
+    AlertDto alertDto;
 
     @RequestMapping("/")
     public String index() {
@@ -24,18 +26,11 @@ public class YasuController {
     // GET Method
 
     @GetMapping("/home")
-    public String home(HttpServletRequest request, Model model) {
-        session = request.getSession(false);
-        if (session ==null) {
+    public String home(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
+        if (sessionUser==null) {
             return "index";
-        }
-
-        userDto = (CcsUserDto) session.getAttribute(SessionConst.LOGIN_USER);
-        if (userDto==null) {
-            return "index";
-        }
-
-        System.out.println(userDto);
+        } else
+            userDto = sessionUser;
 
         model.addAttribute("hakbon", userDto.getStudNum());
         model.addAttribute("name", userDto.getName());
@@ -45,14 +40,32 @@ public class YasuController {
     }
 
     @GetMapping("/notice")
-    public String notice(HttpServletRequest request, Model model) {
-        session = request.getSession(false);
+    public String notice(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
+        if (sessionUser == null) {
+            alertDto = AlertDto.builder()
+                    .message("로그인이 필요한 페이지입니다.")
+                    .redirectUrl("/home")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
 
         return "notice-board";
     }
 
     @GetMapping("/freeboard")
-    public String freeBoard(Model model) {
+    public String freeBoard(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
+        if (sessionUser == null) {
+            alertDto = AlertDto.builder()
+                    .message("로그인이 필요한 페이지입니다.")
+                    .redirectUrl("/home")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
         return "free-board";
     }
 }
