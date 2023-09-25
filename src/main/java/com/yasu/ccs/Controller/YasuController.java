@@ -4,6 +4,7 @@ import com.yasu.ccs.DTO.CcsUserDto;
 import com.yasu.ccs.SessionConst;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class YasuController {
-
-    HttpSession httpSession;
+    @Autowired
+    HttpSession session;
     CcsUserDto userDto;
 
     @RequestMapping("/")
@@ -24,15 +25,17 @@ public class YasuController {
 
     @GetMapping("/home")
     public String home(HttpServletRequest request, Model model) {
-        httpSession = request.getSession(false);
-        if (httpSession==null) {
+        session = request.getSession(false);
+        if (session ==null) {
             return "index";
         }
 
-        userDto = (CcsUserDto) httpSession.getAttribute(SessionConst.LOGIN_USER);
+        userDto = (CcsUserDto) session.getAttribute(SessionConst.LOGIN_USER);
         if (userDto==null) {
             return "index";
         }
+
+        System.out.println(userDto);
 
         model.addAttribute("hakbon", userDto.getStudNum());
         model.addAttribute("name", userDto.getName());
@@ -42,7 +45,9 @@ public class YasuController {
     }
 
     @GetMapping("/notice")
-    public String notice(Model model) {
+    public String notice(HttpServletRequest request, Model model) {
+        session = request.getSession(false);
+
         return "notice-board";
     }
 

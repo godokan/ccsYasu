@@ -1,5 +1,6 @@
 package com.yasu.ccs.Controller;
 
+import com.yasu.ccs.DTO.AlertDto;
 import com.yasu.ccs.DTO.CcsUserDto;
 import com.yasu.ccs.Service.UserService;
 import com.yasu.ccs.SessionConst;
@@ -7,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -14,11 +16,13 @@ import java.util.Map;
 @RequestMapping
 @Controller
 public class UserController {
+    @Autowired
     HttpSession httpSession;
 
     @Autowired
     UserService userService;
     CcsUserDto userDto;
+    AlertDto alertDto;
 
     // 로그인
     @GetMapping("/login")
@@ -46,12 +50,21 @@ public class UserController {
     }
 
     //로그아웃
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request) {
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request, Model model) {
         httpSession = request.getSession(false);
         if (httpSession != null) // 세션 있으면
             httpSession.invalidate();
-        return "redirect:/home";
+
+        alertDto = AlertDto.builder()
+                .message("로그아웃 되었습니다.")
+                .redirectUrl("/home")
+                .build();
+
+        model.addAttribute("message", alertDto.getMessage());
+        model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+
+        return "message";
     }
 
     // 회원가입
