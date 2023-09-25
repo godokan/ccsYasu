@@ -26,7 +26,7 @@ public class UserController {
         return "login";
     }
 
-    @PostMapping("/loginPost")
+    @PostMapping("/login")
     @ResponseBody
     public String loginPost(@RequestBody Map<String, Object> user, HttpServletRequest request) {
         userDto = CcsUserDto.builder()
