@@ -1,6 +1,5 @@
 package com.yasu.ccs.Controller;
 
-import com.yasu.ccs.DTO.AlertDto;
 import com.yasu.ccs.DTO.CcsUserDto;
 import com.yasu.ccs.SessionConst;
 import jakarta.servlet.http.HttpSession;
@@ -16,7 +15,6 @@ public class YasuController {
     @Autowired
     HttpSession session;
     CcsUserDto userDto;
-    AlertDto alertDto;
 
     @RequestMapping("/")
     public String index() {
@@ -37,35 +35,5 @@ public class YasuController {
         model.addAttribute("id", userDto.getId());
 
         return "index_user";
-    }
-
-    @GetMapping("/notice")
-    public String notice(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
-        if (sessionUser == null) {
-            alertDto = AlertDto.builder()
-                    .message("로그인이 필요한 페이지입니다.")
-                    .redirectUrl("/home")
-                    .build();
-            model.addAttribute("message", alertDto.getMessage());
-            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
-            return "message";
-        }
-
-
-        return "notice-board";
-    }
-
-    @GetMapping("/freeboard")
-    public String freeBoard(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
-        if (sessionUser == null) {
-            alertDto = AlertDto.builder()
-                    .message("로그인이 필요한 페이지입니다.")
-                    .redirectUrl("/home")
-                    .build();
-            model.addAttribute("message", alertDto.getMessage());
-            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
-            return "message";
-        }
-        return "free-board";
     }
 }
