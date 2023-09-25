@@ -9,15 +9,15 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-6">
-            <form id="loginForm" action="/loginPost" method="POST">
+            <form id="loginForm">
                 <div class="box">
                     <a href="/"><p><i class="fas fa-book"></i> 어바웃 송담</p></a>
                     <div class="user_data">
-                        <input type="text" name="user_id" id="user_id" autocomplete="off" onclick="loginPost()" required>
+                        <input type="text" name="user_id" id="user_id" autocomplete="off" required>
                         <label for="user_id">아이디</label>
                     </div>
                     <div class="user_data">
-                        <input type="password" name="user_pw" id="user_pw" autocomplete="off" onclick="loginPost()" required>
+                        <input type="password" name="user_pw" id="user_pw" autocomplete="off" required>
                         <label for="user_pw">비밀번호</label>
                         <span id="id_check_msg" style="color:red;"></span>
                     </div>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="submit-btn">
-                        <button id="submit-btn" type="submit">로그인</button>
+                        <button id="submit-btn" type="button" onclick="loginPost()">로그인</button>
                     </div>
                 </div>
             </form>
@@ -63,7 +63,7 @@
         var obj = { "id": document.getElementById("user_id").value,
                     "pw": document.getElementById("user_pw").value };
         $.ajax({
-            url: "/loginPost",
+            url: "/login",
             type: "post",
             data: JSON.stringify(obj),
             dataType: "text",
