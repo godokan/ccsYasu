@@ -207,7 +207,7 @@
                     "nickname": document.getElementById("user_nickname").value,
                     "hackbon": document.getElementById("user_hakbon").value };
         $.ajax({
-            url: "/signupPost",
+            url: "/signup",
             type: "post",
             data: JSON.stringify(obj),
             dataType: "text",

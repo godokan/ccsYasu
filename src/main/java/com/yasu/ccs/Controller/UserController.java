@@ -77,7 +77,7 @@ public class UserController {
         return "signup";
     }
 
-    @PostMapping("/signupPost")
+    @PostMapping("/signup")
     @ResponseBody
     public String signupPost(@RequestBody Map<String, Object> user) {
         System.out.println(user);
