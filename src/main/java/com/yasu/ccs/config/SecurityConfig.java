@@ -20,7 +20,9 @@ public class SecurityConfig {
         http.cors(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
-                .headers((headers)->headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
+                .headers((headers)->headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
+                .formLogin(AbstractHttpConfigurer::disable)
+                .logout(AbstractHttpConfigurer::disable);
         return http.build();
     }
 
