@@ -72,8 +72,11 @@
                 if (data === "OK") {
                     alert("성공");
                     location.href = "/home";
-                } else if (data === "ERR") {
-                    document.getElementById('id_check_msg').innerHTML = '아이디 또는 비밀번호가 틀립니다!'
+                } else if (data === "PW_ERR") {
+                    document.getElementById('id_check_msg').innerHTML = '비밀번호가 틀립니다!'
+                }
+                else if (data === "ERR") {
+                    document.getElementById('id_check_msg').innerHTML = '아이디가 틀립니다!'
                 }
             },
             error: function(errorThrown) {

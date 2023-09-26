@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Objects;
 
 @RequestMapping
 @Controller
@@ -39,14 +40,17 @@ public class UserController {
                 .build();
 
         CcsUserDto findDto = userService.login(userDto);
-
-        if (findDto != null) {
-            httpSession = request.getSession(true);
-            httpSession.setAttribute(SessionConst.LOGIN_USER, findDto);
-            return "OK";
+        if (findDto == null) {
+            return "ERR";
         }
 
-        return "ERR";
+        if (Objects.equals(findDto.getName(), "PW_NOT_MATCHES")) {
+            return "PW_ERR";
+        }
+
+        httpSession = request.getSession(true);
+        httpSession.setAttribute(SessionConst.LOGIN_USER, findDto);
+        return "OK";
     }
 
     //로그아웃
