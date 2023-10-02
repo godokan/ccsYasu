@@ -228,10 +228,12 @@
                     document.getElementById('id_check_msg').style.color = "blue";
                     document.getElementById('id_check_msg').innerHTML = "사용 가능 한 아이디 입니다!";
                     $('#id_check_btn').hide();
+                } else if(data === "ERR") {
+                    document.getElementById('id_check_msg').innerHTML = "사용 중인 아이디 입니다!";
                 }
             },
             error: function(errorThrown) {
-                document.getElementById('id_check_msg').innerHTML = "사용 중인 아이디 입니다!";
+                alert("중복확인 에러");
             }
         });
     }
