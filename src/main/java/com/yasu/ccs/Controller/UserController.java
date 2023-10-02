@@ -94,4 +94,19 @@ public class UserController {
         else
             return "ERR";
     }
+
+    @PostMapping("/chkIdDuplicate")
+    @ResponseBody
+    public String chkIdDuplicate(@RequestBody Map<String, Object> id) {
+        System.out.println(id);
+
+        userDto = CcsUserDto.builder()
+                .id(String.valueOf(id.get("id")))
+                .build();
+
+        if (!userService.findId(userDto))
+            return "OK";
+        else
+            return "ERR";
+    }
 }

@@ -51,4 +51,12 @@ public class UserService {
         }
         return flag;
     }
+
+    public boolean findId(CcsUserDto id) {
+        boolean flag = false;
+        userEntity = id.toEntity();
+        CcsUserEntity foundId = userRepository.findCcsUserEntityById(userEntity.getId());
+        if (foundId!=null) flag = true;
+        return flag;
+    }
 }
