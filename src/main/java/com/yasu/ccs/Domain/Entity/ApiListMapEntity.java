@@ -19,8 +19,8 @@ public class ApiListMapEntity {
     @Column(name = "name", nullable = false, length = 20)
     private String name;
 
-    @Column(name = "description", nullable = false, length = 500)
-    private String description;
+    @Column(name = "proper_name", nullable = false, length = 100)
+    private String properName;
 
     @Column(name = "lat", nullable = false, scale = 6)
     private Float lat;
@@ -28,12 +28,20 @@ public class ApiListMapEntity {
     @Column(name = "lng", nullable = false, scale = 6)
     private Float lng;
 
+    @Column(name = "address", nullable = false, length = 100)
+    private String address;
+
+    @Column(name = "place_url", nullable = false, length = 100)
+    private String placeUrl;
+
     @Builder
-    public ApiListMapEntity(Integer no, String name, String description, Float lat, Float lng) {
+    public ApiListMapEntity(Integer no, String name, String properName, Float lat, Float lng, String address, String placeUrl) {
         this.no = no;
         this.name = name;
-        this.description = description;
+        this.properName = properName;
         this.lat = lat;
         this.lng = lng;
+        this.address = address;
+        this.placeUrl = placeUrl;
     }
 }
