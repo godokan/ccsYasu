@@ -1,5 +1,6 @@
 package com.yasu.ccs.Domain.Entity;
 
+import com.yasu.ccs.DTO.ApiListMapDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -23,19 +24,19 @@ public class ApiListMapEntity {
     private String properName;
 
     @Column(name = "lat", nullable = false, scale = 6)
-    private Float lat;
+    private Double lat;
 
     @Column(name = "lng", nullable = false, scale = 6)
-    private Float lng;
+    private Double lng;
 
-    @Column(name = "address", nullable = false, length = 100)
+    @Column(name = "address", nullable = false, length = 150)
     private String address;
 
     @Column(name = "place_url", nullable = false, length = 100)
     private String placeUrl;
 
     @Builder
-    public ApiListMapEntity(Integer no, String name, String properName, Float lat, Float lng, String address, String placeUrl) {
+    public ApiListMapEntity(Integer no, String name, String properName, Double lat, Double lng, String address, String placeUrl) {
         this.no = no;
         this.name = name;
         this.properName = properName;
@@ -43,5 +44,17 @@ public class ApiListMapEntity {
         this.lng = lng;
         this.address = address;
         this.placeUrl = placeUrl;
+    }
+
+    public ApiListMapDto toDto() {
+        return ApiListMapDto.builder()
+                .no(no)
+                .name(name)
+                .properName(properName)
+                .lat(lat)
+                .lng(lng)
+                .address(address)
+                .placeUrl(placeUrl)
+                .build();
     }
 }
