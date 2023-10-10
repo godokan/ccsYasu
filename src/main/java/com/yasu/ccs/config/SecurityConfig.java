@@ -11,17 +11,38 @@ import org.springframework.security.config.annotation.web.configurers.HeadersCon
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.IpAddressMatcher;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
+    private static final String[] WHITE_LIST = {
+            "/",
+            "/home",
+            "/profile",
+            "/notice",
+            "/freeboard",
+            "/login",
+            "/logout",
+            "/signup",
+            "/chkIdDuplicate",
+            "/error",
+            "/css/**",
+            "/fonts/**",
+            "/images/**",
+            "/js/**"
+    };
+
     @Bean
-    @Order(0)
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
-                        .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
+                .authorizeHttpRequests((authorizeHttpRequests) -> {
+                    authorizeHttpRequests
+                            .requestMatchers(WHITE_LIST).permitAll()
+                            .requestMatchers(new IpAddressMatcher("127.0.0.1")).permitAll();
+                })
+
                 .cors(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .headers((headers)->headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))

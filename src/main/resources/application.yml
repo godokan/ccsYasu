@@ -11,3 +11,9 @@ server:
       force-response: 'true'
     session:
       timeout: 30m
+
+projectYasu:
+  http:
+    auth-token-header:
+      name: Authorization
+    auth-token: fdasrv34atdzbt4zeex7y
