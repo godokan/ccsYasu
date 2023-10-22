@@ -11,4 +11,4 @@ server:
       force-response: 'true'
     session:
       timeout: 30m
-  port: 8081
+  port: 80
