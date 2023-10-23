@@ -62,7 +62,7 @@ public class UserController {
 
         alertDto = AlertDto.builder()
                 .message("로그아웃 되었습니다.")
-                .redirectUrl("/home")
+                .redirectUrl("home")
                 .build();
 
         model.addAttribute("message", alertDto.getMessage());

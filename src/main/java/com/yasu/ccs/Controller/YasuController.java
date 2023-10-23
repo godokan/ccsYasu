@@ -20,7 +20,7 @@ public class YasuController {
 
     @RequestMapping("/")
     public String index() {
-            return "redirect:/home";
+            return "redirect:home";
     }
 
     // GET Method
@@ -44,7 +44,7 @@ public class YasuController {
         if (sessionUser == null) {
             alertDto = AlertDto.builder()
                     .message("로그인이 필요한 페이지입니다.")
-                    .redirectUrl("/home")
+                    .redirectUrl("home")
                     .build();
             model.addAttribute("message", alertDto.getMessage());
             model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
