@@ -6,6 +6,7 @@ import com.yasu.ccs.Service.UserService;
 import com.yasu.ccs.SessionConst;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import java.util.Map;
 import java.util.Objects;
 
 //@RequestMapping
+
+@Slf4j
 @Controller
 public class UserController {
     @Autowired
@@ -40,6 +43,7 @@ public class UserController {
                 .build();
 
         CcsUserDto findDto = userService.login(userDto);
+
         if (findDto == null) {
             return "ERR";
         }
@@ -50,6 +54,9 @@ public class UserController {
 
         httpSession = request.getSession(true);
         httpSession.setAttribute(SessionConst.LOGIN_USER, findDto);
+
+        log.info("유저 : " + findDto.getName()+ " / " + findDto.getId() + "로그인");
+
         return "OK";
     }
 
@@ -80,7 +87,7 @@ public class UserController {
     @PostMapping("/signup")
     @ResponseBody
     public String signupPost(@RequestBody Map<String, Object> user) {
-        System.out.println(user);
+        log.info("/signup : " + user.get("id") + " / " + user.get("pw") + " Posted");
 
         userDto = CcsUserDto.builder()
                 .studNum(Integer.valueOf((String) user.get("hackbon")))
@@ -88,6 +95,8 @@ public class UserController {
                 .pw(String.valueOf(user.get("pw")))
                 .name(String.valueOf(user.get("nickname")))
                 .build();
+
+        log.info("유저 : " + userDto.getName()+ " / " + userDto.getId( )+ " / " + userDto.getPw() + "회원가입");
 
         if (userService.signIn(userDto))
             return "OK";
@@ -98,7 +107,7 @@ public class UserController {
     @PostMapping("/chkIdDuplicate")
     @ResponseBody
     public String chkIdDuplicate(@RequestBody Map<String, Object> id) {
-        System.out.println(id);
+        log.info("/chkIdDuplicate : " + id.get("id") + " Posted");
 
         userDto = CcsUserDto.builder()
                 .id(String.valueOf(id.get("id")))

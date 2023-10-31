@@ -4,12 +4,14 @@ import com.yasu.ccs.DTO.AlertDto;
 import com.yasu.ccs.DTO.CcsUserDto;
 import com.yasu.ccs.SessionConst;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+@Slf4j
 @Controller
 public class BoardController {
     @Autowired
@@ -28,6 +30,7 @@ public class BoardController {
             return "message";
         }
 
+        log.info("유저 : " + sessionUser.getName()+ " / " + sessionUser.getId() + "/notice 접속");
 
         return "notice-board";
     }
@@ -43,6 +46,9 @@ public class BoardController {
             model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
             return "message";
         }
+
+        log.info("유저 : " + sessionUser.getName()+ " / " + sessionUser.getId() + "/freeboard 접속");
+
         return "free-board";
     }
 }
