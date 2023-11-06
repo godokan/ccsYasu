@@ -36,4 +36,5 @@ public class BoardDto {
                 .context(context)
                 .build();
     }
+
 }

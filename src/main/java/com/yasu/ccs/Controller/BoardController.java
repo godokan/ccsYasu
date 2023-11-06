@@ -57,4 +57,21 @@ public class BoardController {
     // 게시판 작성 컨트롤러
 
     // 게시판 조회 컨트롤러
+
+    @GetMapping("/apiboard")
+    public String apiList(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
+        if (sessionUser == null) {
+            alertDto = AlertDto.builder()
+                    .message("로그인이 필요한 페이지입니다.")
+                    .redirectUrl("/home")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
+        log.info("유저 : " + sessionUser.getName()+ " / " + sessionUser.getId() + "/freeboard 접속");
+
+        return "api-board";
+    }
 }

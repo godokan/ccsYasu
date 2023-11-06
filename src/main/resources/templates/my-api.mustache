@@ -1,0 +1,34 @@
+{{>layout/header}}
+
+<link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+
+{{>layout/navbar}}
+
+<div class="container">
+    <div id="main-row" class="row">
+        <div id="main" class="col-md-9">
+            <div class="title">
+                내 API 목록
+                <a title="새로고침" class="reload" onClick="window.location.reload()"><i class="fas fa-redo-alt"></i></a>
+            <div class="writing-list">
+            {{myapiList}}
+                <article>
+                    <a class="writing" href="#">
+                        <div class="writing-data">
+                            <p class="writing-user-time">
+                                {{no}}
+                            </p>
+                            <p class="writing-contants">
+                                {{name}}
+                            </p>
+                            <p class="writing-comments">
+                                {{id}}
+                            </p>
+                        </div>
+                    </a>
+                </article>
+            {{/myapiList}}
+
+{{>layout/footer}}
