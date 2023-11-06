@@ -18,6 +18,8 @@ public class BoardController {
     HttpSession session;
     AlertDto alertDto;
 
+    // 게시판 접속 컨트롤러
+
     @GetMapping("/notice")
     public String notice(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
         if (sessionUser == null) {
@@ -51,4 +53,8 @@ public class BoardController {
 
         return "free-board";
     }
+
+    // 게시판 작성 컨트롤러
+
+    // 게시판 조회 컨트롤러
 }
