@@ -30,97 +30,36 @@
                         </ul>
                     </form>
                 </div>
-                <!--
-                                        <%
-                                        var limt=10;
-                                        var limt = limt > rows.length ? rows.length : 10;
-                                        %>
-                                        <%
-                                        for(var i=0; i < limt ; i++){
-                                        %>
-                                        <articla>
-                                            <a class="writing" href="#">
-                                                <%= rows[i].content %>
-                                            </a>
-                                        </articla>
-                                        <%
-                                        }
-                                        %>
-                -->
-                <article>
-                    <a class="writing" href="#">
-                        <div class="writing-data">
-                            <p class="writing-user-time">
-                                <i class="fas fa-user"></i>
-                                익명
-                                <time>
-                                    21/01/01
-                                </time>
-                            </p>
-                            <p class="writing-contants">
-                                내용
-                            </p>
-                            <p class="writing-comments">
-                                <i class="far fa-thumbs-up">
-                                    0
-                                </i>
-                                <i class="far fa-comments">
-                                    0
-                                </i>
-                            </p>
-                        </div>
-                    </a>
-                </article>
+                {{#articleList}}
+                    <article>
+                        <a class="writing" href="#">
+                            <div class="writing-data">
+                                <p class="writing-user-time">
+                                    <i class="fas fa-user"></i>
+                                    {{studNum}}
+                                    <time>
+                                        {{date}}
+                                    </time>
+                                </p>
+                                <p class="writing-contants">
+                                    {{content}}
+                                </p>
+                            </div>
+                        </a>
+                    </article>
+                {{/articleList}}
                 <article>
                     <div class="search-error">
                         <i class="fas fa-times"></i>
                         &nbsp;입력한 내용을 찾을 수 없어요!
                     </div>
                 </article>
-                <div class="write-page">
-                    <a href=""><i class="fas fa-angle-left"></i></a>
-                    <a href="">1</a>
-                    <a href="">2</a>
-                    <a href="">3</a>
-                    <a href="">4</a>
-                    <a href="">5</a>
-                    <a href=""><i class="fas fa-angle-right"></i></a>
-                </div>
                 <form id="search_form" method="post" action="free_search" onsubmit="return search_check()">
                     <div class="col-md-6">
                         <input id="free-search" name="free-search" type="text" class="form-control" placeholder="자유게시판의 글을 검색해보세요!">
                         <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
                     </div>
                 </form>
-            </div>
-        </div>
-        <div id="right-side" class="col-md-3">
-            <div class="card">
-                <div class="bordered">
-                    <h3>
-                        <a href="#">HOT 게시물</a>
-                    </h3>
-                    <a class="card-list" href="#">
-                        <time>07/06</time>
-                        <p>테스트</p>
-                    </a>
-                    <a class="card-list" href="#">
-                        <time>07/06</time>
-                        <p>테스트</p>
-                    </a>
-                    <a class="card-list" href="#">
-                        <time>07/06</time>
-                        <p>테스트</p>
-                    </a>
-                    <a class="card-list" href="#">
-                        <time>07/06</time>
-                        <p>테스트</p>
-                    </a>
-                    <a class="card-list" href="#">
-                        <time>07/06</time>
-                        <p>테스트</p>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
