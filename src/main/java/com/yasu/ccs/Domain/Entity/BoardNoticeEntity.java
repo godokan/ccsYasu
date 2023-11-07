@@ -23,10 +23,14 @@ public class BoardNoticeEntity {
     @Column(name = "context", nullable = false, length = 2000)
     private String context;
 
+    @Column(name = "date", nullable = false)
+    private String date;
+
     @Builder
-    public BoardNoticeEntity(Integer no, CcsUserEntity studNum, String context) {
+    public BoardNoticeEntity(Integer no, CcsUserEntity studNum, String context, String date) {
         this.no = no;
         this.studNum = studNum;
         this.context = context;
+        this.date = date;
     }
 }

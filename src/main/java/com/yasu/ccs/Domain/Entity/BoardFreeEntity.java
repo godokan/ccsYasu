@@ -24,10 +24,14 @@ public class BoardFreeEntity {
     @Column(name = "context", nullable = false, length = 2000)
     private String context;
 
+    @Column(name = "date", nullable = false)
+    private String date;
+
     @Builder
-    public BoardFreeEntity(Integer no, CcsUserEntity studNum, String context) {
+    public BoardFreeEntity(Integer no, CcsUserEntity studNum, String context, String date) {
         this.no = no;
         this.studNum = studNum;
         this.context = context;
+        this.date = date;
     }
 }

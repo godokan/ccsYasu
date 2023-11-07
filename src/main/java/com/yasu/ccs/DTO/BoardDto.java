@@ -13,12 +13,14 @@ public class BoardDto {
     private Integer no;
     private Integer studNum;
     private String context;
+    private String date;
 
     @Builder
-    public BoardDto(@NonNull Integer no, Integer studNum, String context) {
+    public BoardDto(@NonNull Integer no, Integer studNum, String context, String date) {
         this.no = no;
         this.studNum = studNum;
         this.context = context;
+        this.date = date;
     }
 
     public BoardFreeEntity toBoardFreeEntity() {
@@ -26,6 +28,7 @@ public class BoardDto {
                 .no(no)
                 .studNum(CcsUserEntity.builder().studNum(this.studNum).build())
                 .context(context)
+                .date(date)
                 .build();
     }
 
@@ -34,6 +37,7 @@ public class BoardDto {
                 .no(no)
                 .studNum(CcsUserEntity.builder().studNum(this.studNum).build())
                 .context(context)
+                .date(date)
                 .build();
     }
 
