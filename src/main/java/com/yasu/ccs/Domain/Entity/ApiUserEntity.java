@@ -23,10 +23,14 @@ public class ApiUserEntity {
     @JoinColumn(name = "stud_num", referencedColumnName = "stud_num", insertable = false, updatable = false)
     private CcsUserEntity studNum;
 
+    @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
+    private String id;
+
     @Builder
-    public ApiUserEntity(Integer no, String apiKey, CcsUserEntity studNum) {
+    public ApiUserEntity(Integer no, String apiKey, CcsUserEntity studNum, String id) {
         this.no = no;
         this.apiKey = apiKey;
         this.studNum = studNum;
+        this.id = id;
     }
 }
