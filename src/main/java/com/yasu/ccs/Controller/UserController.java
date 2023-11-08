@@ -2,7 +2,9 @@ package com.yasu.ccs.Controller;
 
 import com.yasu.ccs.DTO.AlertDto;
 import com.yasu.ccs.DTO.CcsUserDto;
+import com.yasu.ccs.Domain.Entity.ApiUserListEntity;
 import com.yasu.ccs.Domain.Repository.ApiListRepository;
+import com.yasu.ccs.Domain.Repository.ApiUserListRepository;
 import com.yasu.ccs.Domain.Repository.ApiUserRepository;
 import com.yasu.ccs.Service.UserService;
 import com.yasu.ccs.SessionConst;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -124,7 +127,7 @@ public class UserController {
     // 내 정보 페이지
 
     @Autowired
-    private ApiUserRepository apiUserRepository;
+    private ApiUserListRepository userListRepository;
 
     @GetMapping("/my_apis")
     public String showMyApis(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
@@ -138,8 +141,10 @@ public class UserController {
             return "message";
         }
 
-        // 여기에 로직 작성 : API USER DB 로부터d 학번으로 조회.
-        // DB 수정 필요 : 외래키 api_user와 api_list 간 관계, api_list_*와 api_list 간 관계 필요.
+        // 서비스로 떠넘겨야 할 로직
+
+        List<ApiUserListEntity> userListEntities = userListRepository.findApiUserListEntitiesByUserStudNum(sessionUser.getStudNum());
+        model.addAttribute("myapiList", userListEntities);
 
         return "my-api";
     }
