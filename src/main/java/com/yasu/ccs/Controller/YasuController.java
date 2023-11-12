@@ -1,7 +1,9 @@
 package com.yasu.ccs.Controller;
 
 import com.yasu.ccs.DTO.AlertDto;
+import com.yasu.ccs.DTO.BoardDto;
 import com.yasu.ccs.DTO.CcsUserDto;
+import com.yasu.ccs.Service.BoardService;
 import com.yasu.ccs.SessionConst;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +13,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import java.util.List;
+
 @Controller
 public class YasuController {
     @Autowired
     HttpSession session;
     CcsUserDto userDto;
     AlertDto alertDto;
+
+    @Autowired
+    BoardService boardService;
 
     @RequestMapping("/")
     public String index() {
@@ -27,6 +34,10 @@ public class YasuController {
 
     @GetMapping("/home")
     public String home(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
+
+        model.addAttribute("noticeList", boardService.getFiveNoticeList());
+        model.addAttribute("freeList", boardService.getFiveFreeList());
+
         if (sessionUser==null) {
             return "index";
         } else
