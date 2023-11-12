@@ -34,26 +34,12 @@
                         <h3>
                             <a href="#">공지사항</a>
                         </h3>
-                        <a class="card-list" href="#">
-                            <time>07/06</time>
-                            <p>테스트</p>
+                        {{#noticeList}}
+                        <a class="card-list" href="notice/{{no}}">
+                            <time>{{date}}</time>
+                            <p>{{context}}</p>
                         </a>
-                        <a class="card-list" href="#">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="#">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="#">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="#">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
+                        {{/noticeList}}
                     </div>
                 </div>
 
@@ -64,26 +50,12 @@
                         <h3>
                             <a href="#">자유게시판</a>
                         </h3>
-                        <a class="card-list" href="#">
-                            <time>07/06</time>
-                            <p>테스트</p>
+                        {{#freeList}}
+                        <a class="card-list" href="freeboard/{{no}}">
+                            <time>{{date}}</time>
+                            <p>{{context}}</p>
                         </a>
-                        <a class="card-list" href="#">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="#">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="#">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="#">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
+                        {{/freeList}}
                     </div>
                 </div>
             </div>

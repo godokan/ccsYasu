@@ -40,166 +40,37 @@
             <form id="search_form">
                 <div class="col-md-12">
                     <input id="main-search" name="main-search" type="text" class="form-control" placeholder="전체 게시판의 글을 검색해보세요!">
-                    <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
+                    <button type="submit" class="search-icon"><i class="fas fa-search" onclick="search_check()"></i></button>
                 </div>
             </form>
             <div id="main-left-incard" class="col-md-6">
                 <div class="card">
                     <div class="bordered">
                         <h3>
-                            <a href="login">자유게시판</a>
+                            <a href="#">공지사항</a>
                         </h3>
-                        <%
-                        var limt=10;
-                        var limt = limt > rows.length ? rows.length : 5;
-                        %>
-                        <%
-                        for(var i=0; i < limt ; i++){
-                        %>
-                        <a class="card-list" href="#">
-                            <time><%= rows[i].date %></time>
-                            <p><%= rows[i].content %></p>
-                        </a>
-                        <%
-                        }
-                        %>
+                        {{#noticeList}}
+                            <a class="card-list" href="notice/{{no}}">
+                                <time>{{date}}</time>
+                                <p>{{context}}</p>
+                            </a>
+                        {{/noticeList}}
                     </div>
                 </div>
-                <div class="card">
-                    <div class="bordered">
-                        <h3>
-                            <a href="login">졸업생게시판</a>
-                        </h3>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="bordered">
-                        <h3>
-                            <a href="login">동아리ㆍ학회</a>
-                        </h3>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                    </div>
-                </div>
+
             </div>
             <div id="main-right-incard" class="col-md-6">
                 <div class="card">
                     <div class="bordered">
                         <h3>
-                            <a href="login">새내기게시판</a>
+                            <a href="#">자유게시판</a>
                         </h3>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="bordered">
-                        <h3>
-                            <a href="login">정보게시판</a>
-                        </h3>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="bordered">
-                        <h3>
-                            <a href="login">장터게시판</a>
-                        </h3>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
-                        <a class="card-list" href="login">
-                            <time>07/06</time>
-                            <p>테스트</p>
-                        </a>
+                        {{#freeList}}
+                            <a class="card-list" href="freeboard/{{no}}">
+                                <time>{{date}}</time>
+                                <p>{{context}}</p>
+                            </a>
+                        {{/freeList}}
                     </div>
                 </div>
             </div>
