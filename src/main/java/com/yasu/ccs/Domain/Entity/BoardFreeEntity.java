@@ -1,5 +1,6 @@
 package com.yasu.ccs.Domain.Entity;
 
+import com.yasu.ccs.DTO.BoardDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -33,5 +34,14 @@ public class BoardFreeEntity {
         this.studNum = studNum;
         this.context = context;
         this.date = date;
+    }
+
+    public BoardDto toDto() {
+        return BoardDto.builder()
+                .no(no)
+                .studNum(studNum.getStudNum())
+                .context(context)
+                .date(date)
+                .build();
     }
 }

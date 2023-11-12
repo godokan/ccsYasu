@@ -1,5 +1,6 @@
 package com.yasu.ccs.Domain.Entity;
 
+import com.yasu.ccs.DTO.ApiListDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -31,5 +32,14 @@ public class ApiListEntity {
         this.name = name;
         this.description = description;
         this.id = id;
+    }
+
+    public ApiListDto toDto() {
+        return ApiListDto.builder()
+                .no(no)
+                .name(name)
+                .description(description)
+                .id(id)
+                .build();
     }
 }
