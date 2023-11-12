@@ -1,11 +1,11 @@
 package com.yasu.ccs.Controller;
 
 import com.yasu.ccs.DTO.AlertDto;
+import com.yasu.ccs.DTO.ApiListDto;
+import com.yasu.ccs.DTO.ApiUserListDto;
 import com.yasu.ccs.DTO.CcsUserDto;
 import com.yasu.ccs.Domain.Entity.ApiUserListEntity;
-import com.yasu.ccs.Domain.Repository.ApiListRepository;
-import com.yasu.ccs.Domain.Repository.ApiUserListRepository;
-import com.yasu.ccs.Domain.Repository.ApiUserRepository;
+import com.yasu.ccs.Service.ApiService;
 import com.yasu.ccs.Service.UserService;
 import com.yasu.ccs.SessionConst;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,9 +29,11 @@ public class UserController {
     HttpSession httpSession;
 
     @Autowired
-    UserService userService;
-    CcsUserDto userDto;
-    AlertDto alertDto;
+    private UserService userService;
+    @Autowired
+    private ApiService apiService;
+    private CcsUserDto userDto;
+    private AlertDto alertDto;
 
     // 로그인
     @GetMapping("/login")
@@ -126,9 +128,6 @@ public class UserController {
 
     // 내 정보 페이지
 
-    @Autowired
-    private ApiUserListRepository userListRepository;
-
     @GetMapping("/my_apis")
     public String showMyApis(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
         if (sessionUser == null) {
@@ -141,10 +140,8 @@ public class UserController {
             return "message";
         }
 
-        // 서비스로 떠넘겨야 할 로직
-
-        List<ApiUserListEntity> userListEntities = userListRepository.findApiUserListEntitiesByUserStudNum(sessionUser.getStudNum());
-        model.addAttribute("myapiList", userListEntities);
+        List<ApiListDto> userLists = apiService.getUserApiList(sessionUser.getStudNum());
+        model.addAttribute("myapiList", userLists);
 
         return "my-api";
     }

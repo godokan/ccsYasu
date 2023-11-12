@@ -1,5 +1,6 @@
 package com.yasu.ccs.Domain.Entity;
 
+import com.yasu.ccs.DTO.ApiUserListDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -28,5 +29,13 @@ public class ApiUserListEntity {
         this.no = no;
         this.listNo = listNo;
         this.userStudNum = userStudNum;
+    }
+
+    public ApiUserListDto toDto() {
+        return ApiUserListDto.builder()
+                .no(no)
+                .listNo(listNo)
+                .userStudNum(userStudNum)
+                .build();
     }
 }
