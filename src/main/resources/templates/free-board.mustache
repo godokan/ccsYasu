@@ -16,12 +16,12 @@
             <div class="writing-list">
                 <input id="write-btn" type="text" onClick="onDisplay()" placeholder="새 글을 작성해 보세요!">
                 <div id="new-write" class="new-write" style="display: none">
-                    <form action="" method="post">
+                    <form action="/freeboard/write" method="post">
                         <p class="write-title">
                             자유게시판
                         </p>
                         <p class="write-main">
-                            <textarea name="text" class="new-writing" placeholder="새 글을 작성해 보세요!"></textarea>
+                            <textarea name="content" class="new-writing" placeholder="새 글을 작성해 보세요!"></textarea>
                         </p>
                         <ul class="write-options">
                             <li title="이미지첨부" class="image-insert"><center><i class="fas fa-images"></i></center></li>
@@ -32,7 +32,7 @@
                 </div>
                 {{#articleList}}
                     <article>
-                        <a class="writing" href="#">
+                        <a class="writing" href="freeboard/{{no}}">
                             <div class="writing-data">
                                 <p class="writing-user-time">
                                     <i class="fas fa-user"></i>

@@ -30,47 +30,24 @@
                         </ul>
                     </form>
                 </div>
-                <!--
-                                        <%
-                                        var limt=10;
-                                        var limt = limt > rows.length ? rows.length : 10;
-                                        %>
-                                        <%
-                                        for(var i=0; i < limt ; i++){
-                                        %>
-                                        <articla>
-                                            <a class="writing" href="#">
-                                                <%= rows[i].content %>
-                                            </a>
-                                        </articla>
-                                        <%
-                                        }
-                                        %>
-                -->
-                <article>
-                    <a class="writing" href="#">
-                        <div class="writing-data">
-                            <p class="writing-user-time">
-                                <i class="fas fa-user"></i>
-                                익명
-                                <time>
-                                    21/01/01
-                                </time>
-                            </p>
-                            <p class="writing-contants">
-                                내용
-                            </p>
-                            <p class="writing-comments">
-                                <i class="far fa-thumbs-up">
-                                    0
-                                </i>
-                                <i class="far fa-comments">
-                                    0
-                                </i>
-                            </p>
-                        </div>
-                    </a>
-                </article>
+                {{#noticeList}}
+                    <article>
+                        <a class="writing" href="freeboard/{{no}}">
+                            <div class="writing-data">
+                                <p class="writing-user-time">
+                                    <i class="fas fa-user"></i>
+                                    {{studNum}}
+                                    <time>
+                                        {{date}}
+                                    </time>
+                                </p>
+                                <p class="writing-contants">
+                                    {{content}}
+                                </p>
+                            </div>
+                        </a>
+                    </article>
+                {{/noticeList}}
                 <article>
                     <div class="search-error">
                         <i class="fas fa-times"></i>

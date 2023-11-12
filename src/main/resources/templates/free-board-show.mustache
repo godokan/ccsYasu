@@ -1,0 +1,90 @@
+{{>layout/header}}
+
+    <link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+
+{{>layout/navbar}}
+
+<div class="container">
+    <div id="main-row" class="row">
+        <div id="main" class="col-md-9">
+            <div class="title">
+                자유게시판
+            </div>
+            <div class="writing-list">
+                {{#articleList}}
+                <article>
+                    <div class="writing-data">
+                        <p class="writing-user-time">
+                            <i class="fas fa-user"></i>
+                            {{studNum}}
+                            <time>
+                                {{date}}
+                            </time>
+                        </p>
+                        <p class="writing-contants">
+                            {{context}}
+                        </p>
+                    </div>
+                </article>
+                {{/articleList}}
+                <div id="new-write" class="new-write" style="display: none">
+                    <form action="freeboard/{{no}}/comment" method="post">
+                        <p class="write-title">
+                            댓글작성
+                        </p>
+                        <p class="write-main">
+                            <textarea name="text" class="new-writing" placeholder="댓글을 작성해 보세요!"></textarea>
+                        </p>
+                        <ul class="write-options">
+                            <button type="submit" class="write-end"><center><i class="fas fa-pen-nib"></i></center></button>
+                            <li title="익명" class="anonym-user"></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="right-side" class="col-md-3">
+            <div class="card">
+                <div class="bordered">
+                    <h3>
+                        <a href="#">HOT 게시물</a>
+                    </h3>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                    <a class="card-list" href="#">
+                        <time>07/06</time>
+                        <p>테스트</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function onDisplay() {
+        $('#new-write').show();
+        $('#write-btn').hide();
+    }
+    function offDisplay() {
+        $('#new-write').hide();
+        $('#write-btn').show();
+    }
+</script>
+
+{{>layout/footer}}
