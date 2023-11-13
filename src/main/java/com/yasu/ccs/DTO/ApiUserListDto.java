@@ -10,12 +10,14 @@ public class ApiUserListDto {
     private Integer no;
     private Integer listNo;
     private Integer userStudNum;
+    private String apiKey;
 
     @Builder
-    public ApiUserListDto(Integer no, Integer listNo, Integer userStudNum) {
+    public ApiUserListDto(Integer no, Integer listNo, Integer userStudNum, String apiKey) {
         this.no = no;
         this.listNo = listNo;
         this.userStudNum = userStudNum;
+        this.apiKey = apiKey;
     }
 
     public ApiUserListEntity toEntity() {
@@ -23,6 +25,7 @@ public class ApiUserListDto {
                 .no(no)
                 .listNo(listNo)
                 .userStudNum(userStudNum)
+                .apiKey(apiKey)
                 .build();
     }
 }
