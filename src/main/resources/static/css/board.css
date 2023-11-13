@@ -69,6 +69,14 @@
 }
 .write-title {
 	border-bottom: 1px solid lightgray;
+	align-content: start;
+}
+.write-title > input,
+.write-title > input:focus {
+	border: none;
+}
+.write-title > input {
+	margin-left: 0px;
 }
 .write-main{
 	height: 150px;
@@ -128,7 +136,7 @@ article {
 	width: 100%;
 	border: 1px solid lightgray;
 	margin: 0;
-	padding: 0;
+	padding: 15px;
 	margin-bottom: -1px;
 }
 .writing-data {

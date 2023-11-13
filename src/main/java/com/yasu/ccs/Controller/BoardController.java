@@ -4,6 +4,8 @@ import com.yasu.ccs.DTO.AlertDto;
 import com.yasu.ccs.DTO.ApiListDto;
 import com.yasu.ccs.DTO.BoardDto;
 import com.yasu.ccs.DTO.CcsUserDto;
+import com.yasu.ccs.Domain.Entity.BoardFreeEntity;
+import com.yasu.ccs.Domain.Repository.BoardFreeRepository;
 import com.yasu.ccs.Service.BoardService;
 import com.yasu.ccs.SessionConst;
 import jakarta.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import java.util.List;
@@ -27,6 +30,9 @@ public class BoardController {
     private BoardService boardService;
 
     private AlertDto alertDto;
+
+    @Autowired
+    private BoardFreeRepository boardFreeRepository;
 
     // 게시판 접속 컨트롤러
 
@@ -70,6 +76,18 @@ public class BoardController {
         model.addAttribute("articleList", freeEntities);
 
         return "free-board";
+    }
+
+    @GetMapping("/freeboard/new")
+    public String newFreeArticle() {
+        return "/freeboard";
+    }
+
+    @PostMapping("/freeboard/create")
+    public String createFreeArticle(BoardDto form) {
+        BoardFreeEntity freeArticle = form.toBoardFreeEntity();
+        BoardFreeEntity saved = boardFreeRepository.save(freeArticle);
+        return "/freeboard";
     }
 
     @GetMapping("/apiboard")

@@ -8,7 +8,8 @@
 
 <div class="container">
     <div id="main-row" class="row">
-        <div id="main" class="col-md-9">
+        <div id="left-side" class="col-lg-1"></div>
+        <div id="main" class="col-md-10">
             <div class="title">
                 자유게시판
                 <a title="새로고침" class="reload" onClick="window.location.reload()"><i class="fas fa-redo-alt"></i></a>
@@ -16,15 +17,15 @@
             <div class="writing-list">
                 <input id="write-btn" type="text" onClick="onDisplay()" placeholder="새 글을 작성해 보세요!">
                 <div id="new-write" class="new-write" style="display: none">
-                    <form action="/freeboard/write" method="post">
+                    <form action="/freeboard/create" method="post">
                         <p class="write-title">
                             자유게시판
+<!--                            <input type="text" name="title" placeholder="제목">-->
                         </p>
                         <p class="write-main">
-                            <textarea name="content" class="new-writing" placeholder="새 글을 작성해 보세요!"></textarea>
+                            <textarea name="context" class="new-writing" placeholder="새 글을 작성해 보세요!"></textarea>
                         </p>
                         <ul class="write-options">
-                            <li title="이미지첨부" class="image-insert"><center><i class="fas fa-images"></i></center></li>
                             <button type="submit" class="write-end"><center><i class="fas fa-pen-nib"></i></center></button>
                             <li title="익명" class="anonym-user"></li>
                         </ul>
@@ -32,7 +33,7 @@
                 </div>
                 {{#articleList}}
                     <article>
-                        <a class="writing" href="freeboard/{{no}}">
+                        <a class="writing" href="/freeboard/{{no}}">
                             <div class="writing-data">
                                 <p class="writing-user-time">
                                     <i class="fas fa-user"></i>
@@ -48,20 +49,9 @@
                         </a>
                     </article>
                 {{/articleList}}
-                <article>
-                    <div class="search-error">
-                        <i class="fas fa-times"></i>
-                        &nbsp;입력한 내용을 찾을 수 없어요!
-                    </div>
-                </article>
-                <form id="search_form" method="post" action="free_search" onsubmit="return search_check()">
-                    <div class="col-md-6">
-                        <input id="free-search" name="free-search" type="text" class="form-control" placeholder="자유게시판의 글을 검색해보세요!">
-                        <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
-                    </div>
-                </form>
             </div>
         </div>
+        <div id="right-side" class="col-md-1"></div>
     </div>
 </div>
 
@@ -73,17 +63,6 @@
     function offDisplay() {
         $('#new-write').hide();
         $('#write-btn').show();
-    }
-    function search_check() {
-        var search = document.getElementById('free-search').value;
-
-        if (search == "") {
-            alert('검색어를 입력하세요!');
-            return false;
-        }
-        else {
-            return true;
-        }
     }
 </script>
 

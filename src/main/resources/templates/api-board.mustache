@@ -12,8 +12,9 @@
             <div class="title">
                 이용 가능 API 목록
                 <a title="새로고침" class="reload" onClick="window.location.reload()"><i class="fas fa-redo-alt"></i></a>
-                <div class="writing-list">
-                    {{#apiList}}
+            </div>
+            <div class="writing-list">
+                {{#apiList}}
                     <article>
                         <a class="writing" href="/api/{{id}}">
                             <div class="writing-data">
@@ -26,8 +27,7 @@
                             </div>
                         </a>
                     </article>
-                    {{/apiList}}
-                </div>
+                {{/apiList}}
             </div>
         </div>
     </div>
