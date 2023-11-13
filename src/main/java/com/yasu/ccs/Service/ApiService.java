@@ -1,7 +1,6 @@
 package com.yasu.ccs.Service;
 
 import com.yasu.ccs.DTO.ApiListDto;
-import com.yasu.ccs.DTO.ApiUserListDto;
 import com.yasu.ccs.Domain.Entity.ApiListEntity;
 import com.yasu.ccs.Domain.Entity.ApiUserListEntity;
 import com.yasu.ccs.Domain.Repository.ApiListRepository;
@@ -45,8 +44,10 @@ public class ApiService {
             return dtos;
         }
 
-        entities.forEach(entity -> listNumbers.add(entity.getListNo()));
+        entities.forEach(entity -> listNumbers.add(entity.getListName()));
         listNumbers.forEach(listNum -> apiListEntities.add(listRepository.findById(listNum).orElse(null)));
+
+        // TODO : 바뀐 테이블에 맞춰 로직 새로 짜기
 
         apiListEntities.forEach( entity -> {
             if (entity != null)
