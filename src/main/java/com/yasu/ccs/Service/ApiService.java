@@ -47,6 +47,8 @@ public class ApiService {
         entities.forEach(entity -> listNumbers.add(entity.getListName()));
         listNumbers.forEach(listNum -> apiListEntities.add(listRepository.findById(listNum).orElse(null)));
 
+        // TODO : 바뀐 테이블에 맞춰 로직 새로 짜기
+
         apiListEntities.forEach( entity -> {
             if (entity != null)
                 dtos.add(entity.toDto());
