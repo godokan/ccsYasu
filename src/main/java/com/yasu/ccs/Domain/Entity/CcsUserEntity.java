@@ -30,7 +30,8 @@ public class CcsUserEntity {
     private String name;
 
     @Builder
-    public CcsUserEntity(Integer studNum, String id, String pw, String name) {
+    public CcsUserEntity(Integer no, Integer studNum, String id, String pw, String name) {
+        this.no = no;
         this.studNum = studNum;
         this.id = id;
         this.pw = pw;
@@ -39,6 +40,7 @@ public class CcsUserEntity {
 
     public CcsUserDto toDto() {
         return CcsUserDto.builder()
+                .no(no)
                 .studNum(studNum)
                 .id(id)
                 .pw(pw)
