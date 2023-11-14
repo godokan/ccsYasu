@@ -139,4 +139,25 @@ public class BoardController {
 
         return "notice-board-show";
     }
+
+    @GetMapping("/apiboard/{id}")
+    public String apiDetail(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, @PathVariable String id, Model model) {
+        if (sessionUser == null) {
+            alertDto = AlertDto.builder()
+                    .message("로그인이 필요한 페이지입니다.")
+                    .redirectUrl("/home")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
+        //TODO : CCS API 와 통신하는 로직 작성
+
+        // 먼저 API 계정이 있는 지 조회 하고, 없으면 생성.
+        // api 키 발급. 계정 id와 학번 필요
+        // 근데 이건 상세 페이지가 아니라 이 페이지에서 누를 발급버튼이어야 하지 않나?
+
+        return "notice-board-show";
+    }
 }
