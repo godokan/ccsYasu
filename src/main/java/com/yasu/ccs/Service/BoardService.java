@@ -12,7 +12,10 @@ import com.yasu.ccs.Domain.Repository.BoardNoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -37,7 +40,7 @@ public class BoardService {
             for (int i = notices.size(); i < 5; i++) {
                 refined.add(BoardNoticeEntity.builder()
                                 .no(-1)
-                                .studNum(CcsUserEntity.builder().studNum(111111111).build())
+                                .studNum(111111111)
                                 .context("글이 없습니다.")
                                 .date("2023-00-00")
                         .build());
@@ -62,7 +65,7 @@ public class BoardService {
             for (int i = freedom.size(); i < 5; i++) {
                 refined.add(BoardFreeEntity.builder()
                         .no(-1)
-                        .studNum(CcsUserEntity.builder().studNum(111111111).build())
+                        .studNum(111111111)
                         .context("글이 없습니다.")
                         .date("2023-00-00")
                         .build());
@@ -110,5 +113,18 @@ public class BoardService {
     public BoardDto getDetailNotice(Integer no) {
         BoardNoticeEntity entity = noticeRepository.findById(no).orElse(BoardNoticeEntity.builder().no(-1).build());
         return entity.toDto();
+    }
+
+    // 게시글 작성
+
+    public void initFreeBoard(CcsUserEntity userEntity, String context){
+        LocalDate localDate = LocalDate.now(ZoneId.of("Asia/Seoul"));
+
+        BoardFreeEntity freeEntity = BoardFreeEntity.builder()
+                .studNum(userEntity.getStudNum())
+                .context(context)
+                .date(localDate.toString())
+                .build();
+        BoardFreeEntity saved = freeRepository.save(freeEntity);
     }
 }

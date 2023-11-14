@@ -17,18 +17,17 @@ public class BoardNoticeEntity {
     @Column(name = "no", unique = true, nullable = false)
     private Integer no;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, targetEntity = CcsUserEntity.class)
     @JoinColumn(name = "stud_num", referencedColumnName = "stud_num", insertable = false, updatable = false)
-    private CcsUserEntity studNum;
+    private Integer studNum;
 
     @Column(name = "context", nullable = false, length = 2000)
     private String context;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "date")
     private String date;
 
     @Builder
-    public BoardNoticeEntity(Integer no, CcsUserEntity studNum, String context, String date) {
+    public BoardNoticeEntity(Integer no, Integer studNum, String context, String date) {
         this.no = no;
         this.studNum = studNum;
         this.context = context;
@@ -38,7 +37,7 @@ public class BoardNoticeEntity {
     public BoardDto toDto() {
         return BoardDto.builder()
                 .no(no)
-                .studNum(studNum.getStudNum())
+                .studNum(studNum)
                 .context(context)
                 .date(date)
                 .build();

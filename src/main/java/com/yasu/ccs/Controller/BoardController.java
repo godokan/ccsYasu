@@ -31,9 +31,6 @@ public class BoardController {
 
     private AlertDto alertDto;
 
-    @Autowired
-    private BoardFreeRepository boardFreeRepository;
-
     // 게시판 접속 컨트롤러
 
     @GetMapping("/notice")
@@ -84,10 +81,10 @@ public class BoardController {
     }
 
     @PostMapping("/freeboard/create")
-    public String createFreeArticle(BoardDto form) {
-        BoardFreeEntity freeArticle = form.toBoardFreeEntity();
-        BoardFreeEntity saved = boardFreeRepository.save(freeArticle);
-        return "/freeboard";
+    public String initToFreeBoard(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, String context) {
+        boardService.initFreeBoard(sessionUser.toEntity(), context);
+
+        return "redirect:/freeboard";
     }
 
     @GetMapping("/apiboard")

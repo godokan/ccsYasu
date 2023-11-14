@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name = "board_free", schema = "ccsyasu_db")
@@ -18,18 +19,17 @@ public class BoardFreeEntity {
     @Column(name = "no", nullable = false)
     private Integer no;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, targetEntity = CcsUserEntity.class)
     @JoinColumn(name = "stud_num", referencedColumnName = "stud_num", insertable = false, updatable = false)
-    private CcsUserEntity studNum;
+    private Integer studNum;
 
     @Column(name = "context", nullable = false, length = 2000)
     private String context;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "date")
     private String date;
 
     @Builder
-    public BoardFreeEntity(Integer no, CcsUserEntity studNum, String context, String date) {
+    public BoardFreeEntity(Integer no, Integer studNum, String context, String date) {
         this.no = no;
         this.studNum = studNum;
         this.context = context;
@@ -39,7 +39,7 @@ public class BoardFreeEntity {
     public BoardDto toDto() {
         return BoardDto.builder()
                 .no(no)
-                .studNum(studNum.getStudNum())
+                .studNum(studNum)
                 .context(context)
                 .date(date)
                 .build();

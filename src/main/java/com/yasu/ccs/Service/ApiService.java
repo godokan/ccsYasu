@@ -28,31 +28,31 @@ public class ApiService {
         return dtos;
     }
 
-    public List<ApiListDto> getUserApiList(Integer studNum) {
-        List<ApiUserListEntity> entities = userListRepository.findApiUserListEntitiesByUserStudNum(studNum);
-        List<Integer> listNumbers = new ArrayList<>();
-        List<ApiListEntity> apiListEntities = new ArrayList<>();
-        List<ApiListDto> dtos = new ArrayList<>();
-
-        if (entities.isEmpty()) {
-            dtos.add(ApiListDto.builder()
-                            .no(0)
-                            .name("조회 된 API가 없습니다.")
-                            .description("API를 신청해주시기 바랍니다.")
-                            .id("404 Not Found")
-                    .build());
-            return dtos;
-        }
-
-        entities.forEach(entity -> listNumbers.add(entity.getListName()));
-        listNumbers.forEach(listNum -> apiListEntities.add(listRepository.findById(listNum).orElse(null)));
-
-        // TODO : 바뀐 테이블에 맞춰 로직 새로 짜기
-
-        apiListEntities.forEach( entity -> {
-            if (entity != null)
-                dtos.add(entity.toDto());
-        });
-        return dtos;
-    }
+//    public List<ApiListDto> getUserApiList(Integer studNum) {
+//        List<ApiUserListEntity> entities = userListRepository.findApiUserListEntitiesByUserStudNum(studNum);
+//        List<Integer> listNumbers = new ArrayList<>();
+//        List<ApiListEntity> apiListEntities = new ArrayList<>();
+//        List<ApiListDto> dtos = new ArrayList<>();
+//
+//        if (entities.isEmpty()) {
+//            dtos.add(ApiListDto.builder()
+//                            .no(0)
+//                            .name("조회 된 API가 없습니다.")
+//                            .description("API를 신청해주시기 바랍니다.")
+//                            .id("404 Not Found")
+//                    .build());
+//            return dtos;
+//        }
+//
+//        entities.forEach(entity -> listNumbers.add(entity.getListName()));
+//        listNumbers.forEach(listNum -> apiListEntities.add(listRepository.findById(listNum).orElse(null)));
+//
+//        // TODO : 바뀐 테이블에 맞춰 로직 새로 짜기
+//
+//        apiListEntities.forEach( entity -> {
+//            if (entity != null)
+//                dtos.add(entity.toDto());
+//        });
+//        return dtos;
+//    }
 }

@@ -9,14 +9,13 @@ import lombok.NonNull;
 
 @Data
 public class BoardDto {
-    @NonNull
     private Integer no;
     private Integer studNum;
     private String context;
     private String date;
 
     @Builder
-    public BoardDto(@NonNull Integer no, Integer studNum, String context, String date) {
+    public BoardDto(Integer no, Integer studNum, String context, String date) {
         this.no = no;
         this.studNum = studNum;
         this.context = context;
@@ -26,7 +25,7 @@ public class BoardDto {
     public BoardFreeEntity toBoardFreeEntity() {
         return BoardFreeEntity.builder()
                 .no(no)
-                .studNum(CcsUserEntity.builder().studNum(this.studNum).build())
+                .studNum(studNum)
                 .context(context)
                 .date(date)
                 .build();
@@ -35,7 +34,7 @@ public class BoardDto {
     public BoardNoticeEntity toBoardNoticeEntity() {
         return BoardNoticeEntity.builder()
                 .no(no)
-                .studNum(CcsUserEntity.builder().studNum(this.studNum).build())
+                .studNum(studNum)
                 .context(context)
                 .date(date)
                 .build();

@@ -128,21 +128,21 @@ public class UserController {
 
     // 내 정보 페이지
 
-    @GetMapping("/my_apis")
-    public String showMyApis(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
-        if (sessionUser == null) {
-            alertDto = AlertDto.builder()
-                    .message("로그인이 필요한 페이지입니다.")
-                    .redirectUrl("/home")
-                    .build();
-            model.addAttribute("message", alertDto.getMessage());
-            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
-            return "message";
-        }
-
-        List<ApiListDto> userLists = apiService.getUserApiList(sessionUser.getStudNum());
-        model.addAttribute("myapiList", userLists);
-
-        return "my-api";
-    }
+//    @GetMapping("/my_apis")
+//    public String showMyApis(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
+//        if (sessionUser == null) {
+//            alertDto = AlertDto.builder()
+//                    .message("로그인이 필요한 페이지입니다.")
+//                    .redirectUrl("/home")
+//                    .build();
+//            model.addAttribute("message", alertDto.getMessage());
+//            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+//            return "message";
+//        }
+//
+//        List<ApiListDto> userLists = apiService.getUserApiList(sessionUser.getStudNum());
+//        model.addAttribute("myapiList", userLists);
+//
+//        return "my-api";
+//    }
 }
