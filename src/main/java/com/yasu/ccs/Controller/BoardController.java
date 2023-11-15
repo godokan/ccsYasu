@@ -81,10 +81,19 @@ public class BoardController {
     }
 
     @PostMapping("/freeboard/create")
-    public String initToFreeBoard(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, String context) {
-        boardService.initFreeBoard(sessionUser.toEntity(), context);
-
-        return "redirect:/freeboard";
+    public String initToFreeBoard(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, String context, Model model) {
+        BoardFreeEntity boardFree = boardService.initFreeBoard(sessionUser.toEntity(), context);
+        if (boardFree!=null)
+            return "redirect:/freeboard";
+        else {
+            alertDto = AlertDto.builder()
+                    .message("게시글 작성에 문제가 발생횄습니다.")
+                    .redirectUrl("/freeboard")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
     }
 
     @GetMapping("/apiboard")

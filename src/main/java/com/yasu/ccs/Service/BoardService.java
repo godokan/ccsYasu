@@ -117,7 +117,7 @@ public class BoardService {
 
     // 게시글 작성
 
-    public void initFreeBoard(CcsUserEntity userEntity, String context){
+    public BoardFreeEntity initFreeBoard(CcsUserEntity userEntity, String context){
         LocalDate localDate = LocalDate.now(ZoneId.of("Asia/Seoul"));
 
         BoardFreeEntity freeEntity = BoardFreeEntity.builder()
@@ -125,6 +125,6 @@ public class BoardService {
                 .context(context)
                 .date(localDate.toString())
                 .build();
-        BoardFreeEntity saved = freeRepository.save(freeEntity);
+        return freeRepository.save(freeEntity);
     }
 }
