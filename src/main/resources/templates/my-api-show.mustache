@@ -1,0 +1,52 @@
+{{>layout/header}}
+
+    <link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+
+{{>layout/navbar}}
+
+<div class="container">
+    <div id="main-row" class="row">
+        <div id="left-side" class="col-md-2"></div>
+        <div id="main" class="col-md-8">
+            <div class="title">
+                내 API 상세정보
+            </div>
+            <div class="writing-list">
+                {{#api}}
+                <article>
+                    <div class="writing-data">
+                        <p class="writing-user-time">
+                            <i class="fas fa-user"></i>
+                            {{name}}
+                        </p>
+                        <p class="writing-contants">
+                            {{description}}
+                        </p>
+                        <p>
+                            {{id}}
+                        </p>
+                    </div>
+                </article>
+                {{/api}}
+                <div class="writing-data">
+                    <p>{{key}}</p>
+                </div>
+            </div>
+        </div>
+        <div id="right-side" class="col-md-2"></div>
+    </div>
+</div>
+<script>
+    function onDisplay() {
+        $('#new-write').show();
+        $('#write-btn').hide();
+    }
+    function offDisplay() {
+        $('#new-write').hide();
+        $('#write-btn').show();
+    }
+</script>
+
+{{>layout/footer}}

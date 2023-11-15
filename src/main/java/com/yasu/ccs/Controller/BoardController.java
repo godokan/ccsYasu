@@ -164,7 +164,7 @@ public class BoardController {
             return "message";
         }
 
-        ApiListDto api = apiService.getApi(id);
+        ApiListDto api = apiService.getApiById(id);
         model.addAttribute("api", api);
 
         return "api-show";
@@ -188,6 +188,14 @@ public class BoardController {
             return "message";
         }
 
-        return "redirect:/home";
+        String issue = apiService.issueApiKey(sessionUser, id);
+
+        alertDto = AlertDto.builder()
+                .message(id+"의 API KEY가 발급되었습니다.")
+                .redirectUrl("/my_apis")
+                .build();
+        model.addAttribute("message", alertDto.getMessage());
+        model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+        return "message";
     }
 }

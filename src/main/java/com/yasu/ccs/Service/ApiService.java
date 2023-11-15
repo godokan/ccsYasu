@@ -1,6 +1,7 @@
 package com.yasu.ccs.Service;
 
 import com.yasu.ccs.DTO.ApiListDto;
+import com.yasu.ccs.DTO.CcsUserDto;
 import com.yasu.ccs.Domain.Entity.ApiListEntity;
 import com.yasu.ccs.Domain.Entity.ApiUserListEntity;
 import com.yasu.ccs.Domain.Repository.ApiListRepository;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +23,8 @@ public class ApiService {
     @Autowired
     ApiUserListRepository userListRepository;
 
+    private RestTemplate restTemplate = new RestTemplate();
+
     public List<ApiListDto> getApiList() {
         List<ApiListEntity> entities = listRepository.findAll();
         List<ApiListDto> dtoList = new ArrayList<>();
@@ -30,8 +32,13 @@ public class ApiService {
         return dtoList;
     }
 
-    public ApiListDto getApi(String apiId) {
+    public ApiListDto getApiById(String apiId) {
         ApiListEntity entity = listRepository.findById(apiId);
+        return entity.toDto();
+    }
+
+    public ApiListDto getApiByName(String name) {
+        ApiListEntity entity = listRepository.findByName(name);
         return entity.toDto();
     }
 
@@ -61,20 +68,27 @@ public class ApiService {
         return dtos;
     }
 
+    // API 통신부
+
     public String getApiUser(Integer studNum) {
         final String URL = "http://localhost:81/api/user/findUser?studNum="+studNum;
-
-        RestTemplate restTemplate = new RestTemplate();
-
         return restTemplate.getForObject(URL, String.class);
     }
 
     public String signUp(Integer studNum, String id) {
         final String URL = "http://localhost:81/api/user/signup?studNum="+studNum+"&id="+id;
-
-        RestTemplate restTemplate = new RestTemplate();
-
         return restTemplate.getForObject(URL, String.class);
     }
 
+    public String issueApiKey(CcsUserDto user, String id) {
+        final String URL = "http://localhost:81/api/user/issue?id="+user.getId()+"&studNum="+user.getStudNum()+"&apiId="+id;
+        String result = restTemplate.getForObject(URL, String.class);
+        // TODO: 후에 추가될 에러 처리에 맞춰 switch-case 만들기
+        return result;
+    }
+
+    public String getKey(Integer studNum, String listName){
+        final String URL = "http://localhost:81/api/user/getKey?studNum="+studNum+"&listName="+listName;
+        return restTemplate.getForObject(URL, String.class);
+    }
 }

@@ -2,9 +2,7 @@ package com.yasu.ccs.Controller;
 
 import com.yasu.ccs.DTO.AlertDto;
 import com.yasu.ccs.DTO.ApiListDto;
-import com.yasu.ccs.DTO.ApiUserListDto;
 import com.yasu.ccs.DTO.CcsUserDto;
-import com.yasu.ccs.Domain.Entity.ApiUserListEntity;
 import com.yasu.ccs.Service.ApiService;
 import com.yasu.ccs.Service.UserService;
 import com.yasu.ccs.SessionConst;
@@ -126,7 +124,7 @@ public class UserController {
             return "ERR";
     }
 
-    // 내 정보 페이지
+    // 내 API 정보 페이지
 
     @GetMapping("/my_apis")
     public String showMyApis(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
@@ -158,6 +156,27 @@ public class UserController {
         return "my-api";
     }
 
+    @GetMapping("/my_apis/{name}")
+    public String showDetailMyApi(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, @PathVariable String name, Model model){
+        if (sessionUser == null) {
+            alertDto = AlertDto.builder()
+                    .message("로그인이 필요한 페이지입니다.")
+                    .redirectUrl("/home")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
+        String key = apiService.getKey(sessionUser.getStudNum(), name);
+        ApiListDto api = apiService.getApiByName(name);
+        model.addAttribute("api", api);
+        model.addAttribute("key", key);
+
+        return "my-api-show";
+    }
+
+    // API 계정 발급
     @GetMapping("/api_user_create")
     public String apiUserCreate(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
         if (sessionUser == null) {
