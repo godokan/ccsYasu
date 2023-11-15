@@ -5,7 +5,6 @@ import com.yasu.ccs.DTO.ApiListDto;
 import com.yasu.ccs.DTO.BoardDto;
 import com.yasu.ccs.DTO.CcsUserDto;
 import com.yasu.ccs.Domain.Entity.BoardFreeEntity;
-import com.yasu.ccs.Domain.Repository.BoardFreeRepository;
 import com.yasu.ccs.Service.ApiService;
 import com.yasu.ccs.Service.BoardService;
 import com.yasu.ccs.SessionConst;
@@ -114,7 +113,7 @@ public class BoardController {
 
         log.info("유저 : " + sessionUser.getName()+ " / " + sessionUser.getId() + "/apiboard 접속");
 
-        List<ApiListDto> apiListEntities = boardService.getApiList();
+        List<ApiListDto> apiListEntities = apiService.getApiList();
         model.addAttribute("apiList", apiListEntities);
 
         return "api-board";
@@ -168,17 +167,27 @@ public class BoardController {
         ApiListDto api = apiService.getApi(id);
         model.addAttribute("api", api);
 
-        return "api-board-show";
+        return "api-show";
     }
 
-    @PostMapping("/apiboard/{name}/issued")
-    public String issue(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser) {
+    @PostMapping("/apiboard/{id}/issued")
+    public String issue(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, @PathVariable String id, Model model) {
         //TODO : CCS API 와 통신하는 로직 작성
-        // 긴급하게 필요 한 페이지 : 상세 조회 페이지 및 발급 버튼
         // 먼저 API 계정이 있는 지 조회 하고, 없으면 생성.
         // api 키 발급. 계정 id와 학번 필요
         // 근데 이건 상세 페이지가 아니라 이 페이지에서 누를 발급버튼이어야 하지 않나?
 
-        return null;
+        String user = apiService.getApiUser(sessionUser.getStudNum());
+        if (user.equals("NF")) {
+            alertDto = AlertDto.builder()
+                    .message("API 계정을 찾을 수 없습니다. API 계정 발급 바랍니다.")
+                    .redirectUrl("/home")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
+        return "redirect:/home";
     }
 }
