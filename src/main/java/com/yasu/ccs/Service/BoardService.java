@@ -96,13 +96,6 @@ public class BoardService {
         return dtos;
     }
 
-    public List<ApiListDto> getApiList() {
-        List<ApiListEntity> entities = apiListRepository.findAll();
-        List<ApiListDto> dtos = new ArrayList<>();
-        entities.forEach(entity -> dtos.add(entity.toDto()));
-        return dtos;
-    }
-
     // 게시판 게시글 상세 조회
 
     public BoardDto getDetailFree(Integer no) {

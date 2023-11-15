@@ -31,7 +31,8 @@ public class ApiService {
     }
 
     public ApiListDto getApi(String apiId) {
-        return listRepository.findById(apiId).toDto();
+        ApiListEntity entity = listRepository.findById(apiId);
+        return entity.toDto();
     }
 
     public List<ApiListDto> getUserApiList(Integer studNum) {
