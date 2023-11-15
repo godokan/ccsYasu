@@ -181,7 +181,7 @@ public class BoardController {
         if (user.equals("NF")) {
             alertDto = AlertDto.builder()
                     .message("API 계정을 찾을 수 없습니다. API 계정 발급 바랍니다.")
-                    .redirectUrl("/home")
+                    .redirectUrl("/api_user_create")
                     .build();
             model.addAttribute("message", alertDto.getMessage());
             model.addAttribute("redirectUrl", alertDto.getRedirectUrl());

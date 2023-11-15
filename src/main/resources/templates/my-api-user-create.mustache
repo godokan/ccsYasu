@@ -1,0 +1,38 @@
+{{>layout/header}}
+
+    <link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+
+{{>layout/navbar}}
+
+<div class="container">
+    <div id="main-row" class="row">
+        <div id="left-side" class="col-md-2"></div>
+        <div id="main" class="col-md-8">
+            <div class="title">
+                API 계정 등록하기
+            </div>
+            <div class="writing-list">
+                <div id="new-write" class="new-write">
+                    <form action="api_user_create/create" method="post">
+                        <button type="submit" class="write-end">등록하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="right-side" class="col-md-2"></div>
+    </div>
+</div>
+<script>
+    function onDisplay() {
+        $('#new-write').show();
+        $('#write-btn').hide();
+    }
+    function offDisplay() {
+        $('#new-write').hide();
+        $('#write-btn').show();
+    }
+</script>
+
+{{>layout/footer}}

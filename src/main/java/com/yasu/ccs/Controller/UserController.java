@@ -140,10 +140,80 @@ public class UserController {
             return "message";
         }
 
+        String user = apiService.getApiUser(sessionUser.getStudNum());
+        if (user.equals("NF")) {
+            alertDto = AlertDto.builder()
+                    .message("API 계정을 찾을 수 없습니다. API 계정 발급 바랍니다.")
+                    .redirectUrl("/api_user_create")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
         List<ApiListDto> userLists = apiService.getUserApiList(sessionUser.getStudNum());
 
         model.addAttribute("myapiList", userLists);
 
         return "my-api";
+    }
+
+    @GetMapping("/api_user_create")
+    public String apiUserCreate(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
+        if (sessionUser == null) {
+            alertDto = AlertDto.builder()
+                    .message("로그인이 필요한 페이지입니다.")
+                    .redirectUrl("/home")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
+        String user = apiService.getApiUser(sessionUser.getStudNum());
+        if (user.equals("OK")) {
+            alertDto = AlertDto.builder()
+                    .message("이미 등록 된 계정입니다. 오류로 판단 될 시 관리자에게 문의 바랍니다.  ")
+                    .redirectUrl("/profile")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
+        return "my-api-user-create";
+    }
+
+    @PostMapping("/api_user_create/create")
+    public String initApiUser(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
+        if (sessionUser == null) {
+            alertDto = AlertDto.builder()
+                    .message("로그인이 필요한 페이지입니다.")
+                    .redirectUrl("/home")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
+        String res = apiService.signUp(sessionUser.getStudNum(), sessionUser.getId());
+
+        if (res.equals("ERR")) {
+            alertDto = AlertDto.builder()
+                    .message("API 계정 생성에 문제가 발생했습니다. 관리자에게 연락 바랍니다.")
+                    .redirectUrl("/profile")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        } else {
+            alertDto = AlertDto.builder()
+                    .message("API 계정 생성이 완료 되었습니다.")
+                    .redirectUrl("/profile")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
     }
 }

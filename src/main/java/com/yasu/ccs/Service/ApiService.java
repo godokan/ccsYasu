@@ -68,4 +68,13 @@ public class ApiService {
 
         return restTemplate.getForObject(URL, String.class);
     }
+
+    public String signUp(Integer studNum, String id) {
+        final String URL = "http://localhost:81/api/user/signup?studNum="+studNum+"&id="+id;
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        return restTemplate.getForObject(URL, String.class);
+    }
+
 }
