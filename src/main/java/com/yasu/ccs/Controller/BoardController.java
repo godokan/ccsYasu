@@ -167,6 +167,6 @@ public class BoardController {
         // api 키 발급. 계정 id와 학번 필요
         // 근데 이건 상세 페이지가 아니라 이 페이지에서 누를 발급버튼이어야 하지 않나?
 
-        return "notice-board-show";
+        return "api-show";
     }
 }
