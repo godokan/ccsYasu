@@ -30,8 +30,8 @@ public class ApiService {
         return dtoList;
     }
 
-    public ApiListDto getApi(String apiName) {
-        return listRepository.findByName(apiName).toDto();
+    public ApiListDto getApi(String apiId) {
+        return listRepository.findById(apiId).toDto();
     }
 
     public List<ApiListDto> getUserApiList(Integer studNum) {
