@@ -8,7 +8,9 @@ import com.yasu.ccs.Domain.Repository.ApiUserListRepository;
 import com.yasu.ccs.Domain.Repository.ApiUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +25,13 @@ public class ApiService {
 
     public List<ApiListDto> getApiList() {
         List<ApiListEntity> entities = listRepository.findAll();
-        List<ApiListDto> dtos = new ArrayList<>();
-        entities.forEach(entity -> dtos.add(entity.toDto()));
-        return dtos;
+        List<ApiListDto> dtoList = new ArrayList<>();
+        entities.forEach(entity -> dtoList.add(entity.toDto()));
+        return dtoList;
+    }
+
+    public ApiListDto getApi(String apiName) {
+        return listRepository.findByName(apiName).toDto();
     }
 
     public List<ApiListDto> getUserApiList(Integer studNum) {
@@ -52,5 +58,13 @@ public class ApiService {
                 dtos.add(entity.toDto());
         });
         return dtos;
+    }
+
+    public String getApiUser(Integer studNum) {
+        final String URL = "http://localhost:81/api/user/findUser?studNum="+studNum;
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        return restTemplate.getForObject(URL, String.class);
     }
 }
