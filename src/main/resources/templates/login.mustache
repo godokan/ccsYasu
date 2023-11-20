@@ -45,11 +45,15 @@
 <!--    var id_input = document.getElementById("user_id");-->
 <!--    var pw_input = document.getElementById("user_pw");-->
 
+    var keydown = false;
+
     function enterkey() {
     if (window.event.keyCode === 13) {
-
-        // 엔터키가 눌렸을 때 실행할 내용
-        loginPost();
+        // 중복 실행 방지
+        if (keydown)
+            return;
+        else
+            loginPost();
         }
     }
 

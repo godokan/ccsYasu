@@ -99,6 +99,33 @@ public class BoardController {
         }
     }
 
+    @GetMapping("/freeboard/{no}")
+    public String freeboardDetail(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, @PathVariable Integer no, Model model) {
+        if (sessionUser == null) {
+            alertDto = AlertDto.builder()
+                    .message("로그인이 필요한 페이지입니다.")
+                    .redirectUrl("/home")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+        if(no == -1) {
+            alertDto = AlertDto.builder()
+                    .message("유효하지 않은 게시글입니다.")
+                    .redirectUrl("/freeboard")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
+        BoardDto freeboardDto = boardService.getDetailFree(no);
+        model.addAttribute("article", freeboardDto);
+
+        return "free-board-show";
+    }
+
     @GetMapping("/apiboard")
     public String apiList(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
         if (sessionUser == null) {

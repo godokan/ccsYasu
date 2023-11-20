@@ -4,7 +4,7 @@
 </head>
 <body>
 
-{{>layout/navbar}}
+{{>layout/navbar-user}}
 
 <div class="container">
     <div id="main-row" class="row">
@@ -30,7 +30,7 @@
                     </div>
                 </article>
                 {{/articleList}}
-                <div id="new-write" class="new-write" style="display: none">
+                <div id="new-write" class="new-write">
                     <form action="notice/{{no}}/comment" method="post">
                         <p class="write-title">
                             댓글작성

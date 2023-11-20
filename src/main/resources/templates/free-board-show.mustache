@@ -4,7 +4,7 @@
 </head>
 <body>
 
-{{>layout/navbar}}
+{{>layout/navbar-user}}
 
 <div class="container">
     <div id="main-row" class="row">
@@ -14,7 +14,7 @@
                 자유게시판
             </div>
             <div class="writing-list">
-                {{#articleList}}
+                {{#article}}
                 <article>
                     <div class="writing-data">
                         <p class="writing-user-time">
@@ -29,14 +29,11 @@
                         </p>
                     </div>
                 </article>
-                {{/articleList}}
-                <div id="new-write" class="new-write" style="display: none">
+                {{/article}}
+                <div id="new-write" class="new-write">
                     <form action="/freeboard/{{no}}/comment" method="post">
-                        <p class="write-title">
-                            댓글작성
-                        </p>
-                        <p class="write-main">
-                            <textarea name="text" class="new-writing" placeholder="댓글을 작성해 보세요!"></textarea>
+                        <p class="write-main" style="height: 55px;">
+                            <textarea name="text" class="new-writing" placeholder="댓글을 작성해 보세요!" style="height: 25px;"></textarea>
                         </p>
                         <ul class="write-options">
                             <button type="submit" class="write-end"><center><i class="fas fa-pen-nib"></i></center></button>
