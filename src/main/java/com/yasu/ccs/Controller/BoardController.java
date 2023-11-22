@@ -239,4 +239,9 @@ public class BoardController {
         model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
         return "message";
     }
+
+    @GetMapping("/smartfarm")
+    public String smartFarm() {
+        return "smartfarm";
+    }
 }

@@ -1,0 +1,46 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* 스마트팜 CSS */
+
+#main > .card { /* 카드 속성 */
+    background-color: #F0F0F0;
+    padding-bottom: 20px;
+}
+.card > .card-title {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0;
+    padding: 10px;
+}
+.card > .card-title > h2 { /* 카드 제목 속성 */
+    font-size: 30px;
+    color: #262B8C;
+    font-weight: bold;
+    margin: 20px 0px 20px 0px;
+    width: 100%;
+    text-align: center;
+}
+.card > .card-body > .col-md-10 {
+    margin: 0;
+    padding: 0;
+}
+.card > .card-body > div > h4 {
+    width: 100%;
+    height: auto;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+.humidity,
+.soil{
+    margin: 0;
+}
+.plant-name {
+    font-size: 25px;
+    color: #67b168;
+    margin: 10px 0 10px 0;
+}
