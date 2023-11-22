@@ -31,12 +31,9 @@
                 </article>
                 {{/articleList}}
                 <div id="new-write" class="new-write">
-                    <form action="notice/{{no}}/comment" method="post">
-                        <p class="write-title">
-                            댓글작성
-                        </p>
-                        <p class="write-main">
-                            <textarea name="text" class="new-writing" placeholder="댓글을 작성해 보세요!"></textarea>
+                    <form action="/notice/{{no}}/comment" method="post">
+                        <p class="write-main" style="height: 55px;">
+                            <textarea name="text" class="new-writing" placeholder="댓글을 작성해 보세요!" style="height: 25px;"></textarea>
                         </p>
                         <ul class="write-options">
                             <button type="submit" class="write-end"><center><i class="fas fa-pen-nib"></i></center></button>
@@ -49,15 +46,5 @@
         <div id="right-side" class="col-md-2"></div>
     </div>
 </div>
-<script>
-    function onDisplay() {
-        $('#new-write').show();
-        $('#write-btn').hide();
-    }
-    function offDisplay() {
-        $('#new-write').hide();
-        $('#write-btn').show();
-    }
-</script>
 
 {{>layout/footer}}

@@ -120,4 +120,15 @@ public class BoardService {
                 .build();
         return freeRepository.save(freeEntity);
     }
+
+    public BoardNoticeEntity initNoticeBoard(CcsUserEntity userEntity, String context){
+        LocalDate localDate = LocalDate.now(ZoneId.of("Asia/Seoul"));
+
+        BoardNoticeEntity noticeEntity = BoardNoticeEntity.builder()
+                .studNum(userEntity.getStudNum())
+                .context(context)
+                .date(localDate.toString())
+                .build();
+        return noticeRepository.save(noticeEntity);
+    }
 }

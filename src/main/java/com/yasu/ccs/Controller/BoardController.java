@@ -5,6 +5,7 @@ import com.yasu.ccs.DTO.ApiListDto;
 import com.yasu.ccs.DTO.BoardDto;
 import com.yasu.ccs.DTO.CcsUserDto;
 import com.yasu.ccs.Domain.Entity.BoardFreeEntity;
+import com.yasu.ccs.Domain.Entity.BoardNoticeEntity;
 import com.yasu.ccs.Service.ApiService;
 import com.yasu.ccs.Service.BoardService;
 import com.yasu.ccs.SessionConst;
@@ -78,11 +79,6 @@ public class BoardController {
         return "free-board";
     }
 
-    @GetMapping("/freeboard/new")
-    public String newFreeArticle() {
-        return "/freeboard";
-    }
-
     @PostMapping("/freeboard/create")
     public String initToFreeBoard(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, String context, Model model) {
         BoardFreeEntity boardFree = boardService.initFreeBoard(sessionUser.toEntity(), context);
@@ -126,6 +122,8 @@ public class BoardController {
         return "free-board-show";
     }
 
+
+
     @GetMapping("/apiboard")
     public String apiList(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, Model model) {
         if (sessionUser == null) {
@@ -149,6 +147,22 @@ public class BoardController {
     // 게시판 작성 컨트롤러
 
     // 게시판 조회 컨트롤러 : 상세보기 페이지.
+
+    @PostMapping("/notice/create")
+    public String initToNotice(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, String context, Model model) {
+        BoardNoticeEntity boardNotice = boardService.initNoticeBoard(sessionUser.toEntity(), context);
+        if (boardNotice != null)
+            return "redirect:/notice";
+        else {
+            alertDto = AlertDto.builder()
+                    .message("게시글 작성에 문제가 발생횄습니다.")
+                    .redirectUrl("/notice")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+    }
 
     @GetMapping("/notice/{no}")
     public String noticeDetail(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, @PathVariable Integer no, Model model) {
