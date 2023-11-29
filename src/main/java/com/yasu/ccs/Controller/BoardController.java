@@ -145,12 +145,22 @@ public class BoardController {
 
     @PostMapping("/notice/create")
     public String initToNotice(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, String context, Model model) {
-        BoardNoticeEntity boardNotice = boardService.initNoticeBoard(sessionUser.toEntity(), context);
-        if (boardNotice != null)
-            return "redirect:/notice";
-        else {
+        if(sessionUser.getStudNum()==999999999) {
+            BoardNoticeEntity boardNotice = boardService.initNoticeBoard(sessionUser.toEntity(), context);
+            if (boardNotice != null)
+                return "redirect:/notice";
+            else {
+                alertDto = AlertDto.builder()
+                        .message("게시글 작성에 문제가 발생횄습니다.")
+                        .redirectUrl("/notice")
+                        .build();
+                model.addAttribute("message", alertDto.getMessage());
+                model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+                return "message";
+            }
+        } else {
             alertDto = AlertDto.builder()
-                    .message("게시글 작성에 문제가 발생횄습니다.")
+                    .message("게시글 작성 권한이 없습니다.")
                     .redirectUrl("/notice")
                     .build();
             model.addAttribute("message", alertDto.getMessage());
@@ -208,10 +218,6 @@ public class BoardController {
 
     @PostMapping("/apiboard/{id}/issued")
     public String issue(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, @PathVariable String id, Model model) {
-        //TODO : CCS API 와 통신하는 로직 작성
-        // 먼저 API 계정이 있는 지 조회 하고, 없으면 생성.
-        // api 키 발급. 계정 id와 학번 필요
-        // 근데 이건 상세 페이지가 아니라 이 페이지에서 누를 발급버튼이어야 하지 않나?
 
         String user = apiService.getApiUser(sessionUser.getStudNum());
         if (user.equals("NF")) {

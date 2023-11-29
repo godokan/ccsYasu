@@ -17,12 +17,12 @@
             <div class="writing-list">
                 <input id="write-btn" type="text" onClick="onDisplay()" placeholder="공지사항 작성은 권한 제한이 있습니다.">
                 <div id="new-write" class="new-write" style="display: none">
-                    <form action="" method="post">
+                    <form action="/notice/create" method="post">
                         <p class="write-title">
                             공지사항
                         </p>
                         <p class="write-main">
-                            <textarea name="text" class="new-writing" placeholder="공지사항 작성은 권한 제한이 있습니다."></textarea>
+                            <textarea name="context" class="new-writing" placeholder="공지사항 작성은 권한 제한이 있습니다."></textarea>
                         </p>
                         <ul class="write-options">
                             <button type="submit" class="write-end"><center><i class="fas fa-pen-nib"></i></center></button>
@@ -48,15 +48,6 @@
                         </a>
                     </article>
                 {{/articleList}}
-                <div class="write-page">
-                    <a href=""><i class="fas fa-angle-left"></i></a>
-                    <a href="">1</a>
-                    <a href="">2</a>
-                    <a href="">3</a>
-                    <a href="">4</a>
-                    <a href="">5</a>
-                    <a href=""><i class="fas fa-angle-right"></i></a>
-                </div>
             </div>
         </div>
         <div id="right-side" class="col-md-1"></div>
