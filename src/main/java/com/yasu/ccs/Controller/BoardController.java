@@ -190,10 +190,9 @@ public class BoardController {
             return "message";
         }
 
-//        BoardDto noticeDto = boardService.getDetailNotice(no);
+        BoardDto freeboardDto = boardService.getDetailNotice(no);
 
-        BoardDto noticeDto = BoardDto.builder().no(no).studNum(123456789).date("2023-11-13").context("캡스톤 디자인 프로젝트 어바웃송담 화이팅").build();
-        model.addAttribute("articleList", noticeDto);
+        model.addAttribute("articleList", freeboardDto);
 
         return "notice-board-show";
     }
