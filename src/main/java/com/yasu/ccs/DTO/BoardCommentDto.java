@@ -2,11 +2,15 @@ package com.yasu.ccs.DTO;
 
 import com.yasu.ccs.Domain.Entity.BoardFreeCommentEntity;
 import com.yasu.ccs.Domain.Entity.BoardFreeEntity;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
+import javax.xml.stream.events.Comment;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 @Data
 public class BoardCommentDto {
     @NonNull
@@ -19,6 +23,14 @@ public class BoardCommentDto {
         this.no = no;
         this.board_no = board_no;
         this.context = context;
+    }
+
+    public static BoardCommentDto createBoardCommentDto(BoardFreeCommentEntity c) {
+        return new BoardCommentDto(
+            c.getNo(),
+            c.getBoardNo(),
+            c.getContext()
+        );
     }
 
     public BoardFreeCommentEntity toEntity() {
