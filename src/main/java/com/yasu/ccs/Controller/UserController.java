@@ -131,7 +131,7 @@ public class UserController {
         if (sessionUser == null) {
             alertDto = AlertDto.builder()
                     .message("로그인이 필요한 페이지입니다.")
-                    .redirectUrl("/home")
+                    .redirectUrl("/login")
                     .build();
             model.addAttribute("message", alertDto.getMessage());
             model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
@@ -161,7 +161,7 @@ public class UserController {
         if (sessionUser == null) {
             alertDto = AlertDto.builder()
                     .message("로그인이 필요한 페이지입니다.")
-                    .redirectUrl("/home")
+                    .redirectUrl("/login")
                     .build();
             model.addAttribute("message", alertDto.getMessage());
             model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
@@ -182,7 +182,7 @@ public class UserController {
         if (sessionUser == null) {
             alertDto = AlertDto.builder()
                     .message("로그인이 필요한 페이지입니다.")
-                    .redirectUrl("/home")
+                    .redirectUrl("/login")
                     .build();
             model.addAttribute("message", alertDto.getMessage());
             model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
@@ -208,7 +208,7 @@ public class UserController {
         if (sessionUser == null) {
             alertDto = AlertDto.builder()
                     .message("로그인이 필요한 페이지입니다.")
-                    .redirectUrl("/home")
+                    .redirectUrl("/login")
                     .build();
             model.addAttribute("message", alertDto.getMessage());
             model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
