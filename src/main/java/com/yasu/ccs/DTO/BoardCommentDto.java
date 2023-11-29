@@ -6,11 +6,6 @@ import lombok.*;
 
 import javax.xml.stream.events.Comment;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
 @Data
 public class BoardCommentDto {
     @NonNull
@@ -36,7 +31,7 @@ public class BoardCommentDto {
     public BoardFreeCommentEntity toEntity() {
         return BoardFreeCommentEntity.builder()
                 .no(no)
-                .boardNo(BoardFreeEntity.builder().no(this.board_no).build())
+                .boardNo(board_no)
                 .context(context)
                 .build();
     }

@@ -1,5 +1,6 @@
 package com.yasu.ccs.Domain.Entity;
 
+import com.yasu.ccs.DTO.BoardCommentDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -16,17 +17,24 @@ public class BoardFreeCommentEntity {
     @Column(name = "no", nullable = false)
     private Integer no;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, targetEntity = BoardFreeEntity.class)
     @JoinColumn(name = "board_no", referencedColumnName = "no", insertable = false, updatable = false)
-    private BoardFreeEntity boardNo;
+    private Integer boardNo;
 
     @Column(name = "context", nullable = false, length = 2000)
     private String context;
 
     @Builder
-    public BoardFreeCommentEntity(Integer no, BoardFreeEntity boardNo, String context) {
+    public BoardFreeCommentEntity(Integer no, Integer boardNo, String context) {
         this.no = no;
         this.boardNo = boardNo;
         this.context = context;
+    }
+
+    public BoardCommentDto toDto() {
+        return BoardCommentDto.builder()
+                .no(no)
+                .board_no(boardNo)
+                .context(context)
+                .build();
     }
 }
