@@ -83,14 +83,14 @@ public class BoardService {
     // 게시판 전체 조회
 
     public List<BoardDto> getFreeList() {
-        List<BoardFreeEntity> entities = freeRepository.findAll();
+        List<BoardFreeEntity> entities = freeRepository.findAllByOrderByNoDesc();
         List<BoardDto> dtos = new ArrayList<>();
         entities.forEach(entity -> dtos.add(entity.toDto()));
         return dtos;
     }
 
     public List<BoardDto> getNoticeList() {
-        List<BoardNoticeEntity> entities = noticeRepository.findAll();
+        List<BoardNoticeEntity> entities = noticeRepository.findAllByOrderByNoDesc();
         List<BoardDto> dtos = new ArrayList<>();
         entities.forEach(entity -> dtos.add(entity.toDto()));
         return dtos;
