@@ -1,13 +1,11 @@
 package com.yasu.ccs.Controller;
 
-import com.yasu.ccs.DTO.AlertDto;
-import com.yasu.ccs.DTO.ApiListDto;
-import com.yasu.ccs.DTO.BoardDto;
-import com.yasu.ccs.DTO.CcsUserDto;
+import com.yasu.ccs.DTO.*;
 import com.yasu.ccs.Domain.Entity.BoardFreeEntity;
 import com.yasu.ccs.Domain.Entity.BoardNoticeEntity;
 import com.yasu.ccs.Service.ApiService;
 import com.yasu.ccs.Service.BoardService;
+import com.yasu.ccs.Service.CommentService;
 import com.yasu.ccs.SessionConst;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +27,9 @@ public class BoardController {
 
     @Autowired
     private ApiService apiService;
+
+    @Autowired
+    private CommentService commentService;
 
     private AlertDto alertDto;
 
@@ -116,7 +117,42 @@ public class BoardController {
         BoardDto freeboardDto = boardService.getDetailFree(no);
         model.addAttribute("article", freeboardDto);
 
+        List<BoardCommentDto> commentList = commentService.getComments(no);
+        model.addAttribute("comments", commentList);
+
         return "free-board-show";
+    }
+
+    @PostMapping("/freeboard/{no}/comment")
+    public String newComment(@SessionAttribute(value = SessionConst.LOGIN_USER, required = false) CcsUserDto sessionUser, @PathVariable Integer no, String context, Model model) {
+        if (sessionUser == null) {
+            alertDto = AlertDto.builder()
+                    .message("로그인이 필요한 페이지입니다.")
+                    .redirectUrl("/login")
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
+        BoardCommentDto commentDto = commentService.newComment(no, context);
+        if (commentDto!= null) {
+            alertDto = AlertDto.builder()
+                    .message("댓글이 작성 되었습니다.")
+                    .redirectUrl("/freeboard/"+no)
+                    .build();
+            model.addAttribute("message", alertDto.getMessage());
+            model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+            return "message";
+        }
+
+        alertDto = AlertDto.builder()
+                .message("댓글 작성에 실패 했습니다.")
+                .redirectUrl("/freeboard/"+no)
+                .build();
+        model.addAttribute("message", alertDto.getMessage());
+        model.addAttribute("redirectUrl", alertDto.getRedirectUrl());
+        return "message";
     }
 
     @GetMapping("/apiboard")
@@ -190,9 +226,8 @@ public class BoardController {
             return "message";
         }
 
-        BoardDto freeboardDto = boardService.getDetailNotice(no);
-
-        model.addAttribute("articleList", freeboardDto);
+        BoardDto noticeBoardDTO = boardService.getDetailNotice(no);
+        model.addAttribute("article", noticeBoardDTO);
 
         return "notice-board-show";
     }

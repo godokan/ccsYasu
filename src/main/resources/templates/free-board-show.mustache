@@ -31,15 +31,36 @@
                 </article>
                 {{/article}}
                 <div id="new-write" class="new-write">
-                    <form action="/freeboard/{{no}}/comment" method="post">
+                    <form action="/freeboard/{{no}}/comment" method="POST">
                         <p class="write-main" style="height: 55px;">
-                            <textarea name="text" class="new-writing" placeholder="댓글을 작성해 보세요!" style="height: 25px;"></textarea>
+                            <textarea name="context" class="new-writing" placeholder="댓글을 작성해 보세요!" style="height: 25px;"></textarea>
                         </p>
                         <ul class="write-options">
                             <button type="submit" class="write-end"><center><i class="fas fa-pen-nib"></i></center></button>
                             <li title="익명" class="anonym-user"></li>
                         </ul>
                     </form>
+                </div>
+                <div class="title">
+                    댓글
+                </div>
+                <div class="writing-list">
+                    {{#comments}}
+                        <article>
+                            <div class="writing-data">
+                                <p class="writing-user-time">
+                                    <i class="fas fa-user"></i>
+                                    익명
+                                    <time>
+                                        {{date}}
+                                    </time>
+                                </p>
+                                <p class="writing-contants">
+                                    {{context}}
+                                </p>
+                            </div>
+                        </article>
+                    {{/comments}}
                 </div>
             </div>
         </div>

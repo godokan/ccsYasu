@@ -23,11 +23,15 @@ public class BoardFreeCommentEntity {
     @Column(name = "context", nullable = false, length = 2000)
     private String context;
 
+    @Column(name = "date")
+    private String date;
+
     @Builder
-    public BoardFreeCommentEntity(Integer no, Integer boardNo, String context) {
+    public BoardFreeCommentEntity(Integer no, Integer boardNo, String context, String date) {
         this.no = no;
         this.boardNo = boardNo;
         this.context = context;
+        this.date = date;
     }
 
     public BoardCommentDto toDto() {
@@ -35,6 +39,7 @@ public class BoardFreeCommentEntity {
                 .no(no)
                 .board_no(boardNo)
                 .context(context)
+                .date(date)
                 .build();
     }
 }

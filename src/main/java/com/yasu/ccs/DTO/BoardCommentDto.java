@@ -12,19 +12,22 @@ public class BoardCommentDto {
     private Integer no;
     private Integer board_no;
     private String context;
+    private String date;
 
     @Builder
-    public BoardCommentDto(@NonNull Integer no, Integer board_no, String context) {
+    public BoardCommentDto(@NonNull Integer no, Integer board_no, String context, String date) {
         this.no = no;
         this.board_no = board_no;
         this.context = context;
+        this.date = date;
     }
 
     public static BoardCommentDto createBoardCommentDto(BoardFreeCommentEntity c) {
         return new BoardCommentDto(
             c.getNo(),
             c.getBoardNo(),
-            c.getContext()
+            c.getContext(),
+            c.getDate()
         );
     }
 
@@ -33,6 +36,7 @@ public class BoardCommentDto {
                 .no(no)
                 .boardNo(board_no)
                 .context(context)
+                .date(date)
                 .build();
     }
 }

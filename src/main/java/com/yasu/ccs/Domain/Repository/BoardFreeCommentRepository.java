@@ -9,5 +9,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BoardFreeCommentRepository extends JpaRepository<BoardFreeCommentEntity, Integer> {
-    Optional<List<BoardFreeCommentEntity>> findByBoardNo(Integer boardId);
+    Optional<List<BoardFreeCommentEntity>> findAllByBoardNo(Integer boardNo);
 }
