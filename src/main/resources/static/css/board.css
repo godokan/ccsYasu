@@ -12,6 +12,9 @@
 	margin-bottom: 10px;
 	margin-top: 2.5px;
 }
+.title > a {
+	color: #262B8C;
+}
 .reload {
 	float: right;
 	text-align: center;
