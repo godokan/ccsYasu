@@ -12,16 +12,17 @@
             <div class="title">
                 내 API 목록
                 <a title="새로고침" class="reload" onClick="window.location.reload()"><i class="fas fa-redo-alt"></i></a>
+            </div>
             <div class="writing-list">
             {{#myapiList}}
                 <article>
                     <a class="writing" href="/my_apis/{{name}}">
                         <div class="writing-data">
                             <p class="writing-user-time">
-                                {{no}}
+                                {{name}}
                             </p>
                             <p class="writing-contants">
-                                {{name}}
+                                {{description}}
                             </p>
                             <p class="writing-comments">
                                 {{id}}
@@ -30,5 +31,10 @@
                     </a>
                 </article>
             {{/myapiList}}
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {{>layout/footer}}

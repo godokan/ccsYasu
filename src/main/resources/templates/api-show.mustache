@@ -24,17 +24,15 @@
                         <p class="writing-contants">
                             {{description}}
                         </p>
-                        <p>
+                        <p class="writing-comments">
                             {{id}}
                         </p>
                     </div>
-                </article>
                 {{/api}}
-                <div id="new-write" class="new-write">
-                    <form action="{{id}}/issued" method="post">
-                        <button type="submit" class="write-end">발급</button>
-                    </form>
-                </div>
+                <form action="{{id}}/issued" method="post">
+                    <button type="submit" class="btn-navy">발급</button>
+                </form>
+                </article>
             </div>
         </div>
         <div id="right-side" class="col-md-2"></div>
