@@ -1,6 +1,24 @@
 {{>layout/header}}
 
 <link rel="stylesheet" href="/css/guest.css">
+<style>
+    .card > .card-title {
+        font-size: 15pt;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    #miniyasu {
+        color: #2b669a;
+    }
+    #yellowsky {
+        color: #ec971f;
+    }
+    #smartfarm {
+        color: #3c763d;
+    }
+</style>
 </head>
 <body>
 
@@ -22,12 +40,6 @@
             </div>
         </div>
         <div id="main" class="col-md-6">
-            <form id="search_form">
-                <div class="col-md-12">
-                    <input id="main-search" name="main-search" type="text" class="form-control" placeholder="전체 게시판의 글을 검색해보세요!">
-                    <button type="submit" class="search-icon"><i class="fas fa-search" onclick="search_check()"></i></button>
-                </div>
-            </form>
             <div id="main-left-incard" class="col-md-6">
                 <div class="card">
                     <div class="bordered">
@@ -45,7 +57,7 @@
 
             </div>
             <div id="main-right-incard" class="col-md-6">
-                <div class="card">
+                <div class="card" style="margin: 0">
                     <div class="bordered">
                         <h3>
                             <a href="/login">자유게시판</a>
@@ -53,7 +65,7 @@
                         {{#freeList}}
                         <a class="card-list" href="freeboard/{{no}}">
                             <time>{{date}}</time>
-                            <p>{{context}}</p>
+                            <div class="text-truncate">{{context}}</div>
                         </a>
                         {{/freeList}}
                     </div>
@@ -61,30 +73,37 @@
             </div>
         </div>
         <div id="right-side" class="col-md-3">
-            <div class="card">
+            <div class="card" style="margin: 0;">
                 <div class="bordered">
                     <h3>
-                        <a href="#">HOT 게시물</a>
+                        바로가기
                     </h3>
-                    <a class="card-list" href="#">
-                        <time>07/06</time>
-                        <p>테스트</p>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding:0; margin: 0">
+                <div class="card" style="padding: 15px; margin: 0;">
+                    <a href="/releases">
+                        <div id="miniyasu" class="card-title">
+                            미니야수
+                        </div>
                     </a>
-                    <a class="card-list" href="#">
-                        <time>07/06</time>
-                        <p>테스트</p>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding:0; margin: 0">
+                <div class="card" style="padding: 15px; margin: 0;">
+                    <a href="/releases">
+                        <div id="yellowsky" class="card-title">
+                            노란하늘
+                        </div>
                     </a>
-                    <a class="card-list" href="#">
-                        <time>07/06</time>
-                        <p>테스트</p>
-                    </a>
-                    <a class="card-list" href="#">
-                        <time>07/06</time>
-                        <p>테스트</p>
-                    </a>
-                    <a class="card-list" href="#">
-                        <time>07/06</time>
-                        <p>테스트</p>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding:0; margin: 0">
+                <div class="card" style="padding: 15px; margin: 0;">
+                    <a href="http://ccsyasu.cafe24.com:8083/index">
+                        <div id="smartfarm" class="card-title">
+                            스마트 팜
+                        </div>
                     </a>
                 </div>
             </div>
