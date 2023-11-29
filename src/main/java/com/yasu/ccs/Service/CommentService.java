@@ -36,7 +36,13 @@ public class CommentService {
         return dtoList;
     }
 
-    public BoardFreeCommentEntity newComment(BoardFreeEntity boardFree, String context) {
+    // 컨트롤러에서 : if문에서 null 검사하고 !null 이면 작동, null이면 abort
+    public BoardFreeCommentEntity newComment(Integer no, String context) {
+
+        BoardFreeEntity boardFree = boardFreeRepository.findById(no).orElse(null);
+        if (boardFree==null) {
+            return null;
+        }
 
         BoardFreeCommentEntity entity = BoardFreeCommentEntity.builder()
                 .boardNo(boardFree.getNo())
