@@ -36,9 +36,7 @@ public class BoardService {
         List<BoardDto> out = new ArrayList<>();
 
         if (notices.size() < 5) {
-//            refined = notices;
             for (int i = notices.size()-1; i >= 0; --i) {
-                System.out.println(i);
                 refined.add(notices.get(i));
             }
             for (int i = refined.size(); i < 5; i++) {
@@ -65,7 +63,9 @@ public class BoardService {
         List<BoardDto> out = new ArrayList<>();
 
         if (freedom.size() < 5) {
-            refined = freedom;
+            for (int i = freedom.size()-1; i >= 0; --i) {
+                refined.add(freedom.get(i));
+            }
             for (int i = freedom.size(); i < 5; i++) {
                 refined.add(BoardFreeEntity.builder()
                         .no(-1)
