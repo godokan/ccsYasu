@@ -36,13 +36,17 @@ public class BoardService {
         List<BoardDto> out = new ArrayList<>();
 
         if (notices.size() < 5) {
-            refined = notices;
-            for (int i = notices.size(); i < 5; i++) {
+//            refined = notices;
+            for (int i = notices.size()-1; i >= 0; --i) {
+                System.out.println(i);
+                refined.add(notices.get(i));
+            }
+            for (int i = refined.size(); i < 5; i++) {
                 refined.add(BoardNoticeEntity.builder()
-                                .no(-1)
-                                .studNum(111111111)
-                                .context("글이 없습니다.")
-                                .date("2023-00-00")
+                        .no(-1)
+                        .studNum(111111111)
+                        .context("글이 없습니다.")
+                        .date("2023-00-00")
                         .build());
             }
         } else {
