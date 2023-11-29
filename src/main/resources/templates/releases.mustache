@@ -1,6 +1,24 @@
 {{>layout/header}}
 
 <link rel="stylesheet" href="/css/board.css">
+<style>
+    .card > .card-title {
+        font-size: 15pt;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    #miniyasu {
+        color: #2b669a;
+    }
+    #yellowsky {
+        color: #ec971f;
+    }
+    #smartfarm {
+        color: #3c763d;
+    }
+</style>
 </head>
 <body>
 
@@ -15,28 +33,40 @@
                 <a title="새로고침" class="reload" onClick="window.location.reload()"><i class="fas fa-redo-alt"></i></a>
             </div>
             <div class="row">
-                <div class="col-md-4 card">
-                    <div class="bordered">
-                        <h3>
-                            미니야스
-                        </h3>
-                        <img src="/images/miniYasu.png">
+                <div class="col-md-4">
+                    <div class="card" style="padding: 15px">
+                        <div id="miniyasu" class="card-title">
+                            미니야수
+                        </div>
+                        <div class="card-body">
+                            <a href="https://play.google.com/store/apps/details?id=com.release.miniyasu">
+                                <img src="/images/miniYasu.png" style="width: 100%;">
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 card">
-                    <div class="bordered">
-                        <h3>
+                <div class="col-md-4">
+                    <div class="card" style="padding: 15px">
+                        <div id="yellowsky" class="card-title">
                             노란하늘
-                        </h3>
-                        <img src="/images/yellowSky.png">
+                        </div>
+                        <div class="card-body">
+                            <a href="http://ccsyasu.cafe24.com/fileDownload/yellow-sky.apk">
+                                <img src="/images/yellowSky.png" style="width: 100%;">
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 card">
-                    <div class="bordered">
-                        <h3>
+                <div class="col-md-4">
+                    <div class="card" style="padding: 15px">
+                        <div id="smartfarm" class="card-title">
                             스마트 팜
-                        </h3>
-                        <img src="/images/smartFarm.png">
+                        </div>
+                        <div class="card-body">
+                            <a href="http://ccsyasu.cafe24.com:8083/index">
+                                <img src="/images/smartFarm.png" style="width: 100%;">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

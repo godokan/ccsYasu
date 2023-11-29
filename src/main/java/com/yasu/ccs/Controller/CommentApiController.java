@@ -16,13 +16,13 @@ import java.util.List;
 public class CommentApiController {
     @Autowired
     private CommentService commentService;
-
-    @PostMapping("/freeboard/{no}/comment")
-    public ResponseEntity<List<BoardCommentDto>> getBoardComments(@PathVariable Integer no) {
-        List<BoardCommentDto> dtoList = commentService.getComments(no);
-        if (dtoList.get(0).getNo()==-1)
-
-
-        return ResponseEntity.status(HttpStatus.OK).body(dtoList);
-    }
+//
+//    @PostMapping("/freeboard/{no}/comment")
+//    public ResponseEntity<List<BoardCommentDto>> getBoardComments(@PathVariable Integer no) {
+//        List<BoardCommentDto> dtoList = commentService.getComments(no);
+//        if (dtoList.get(0).getNo()==-1)
+//
+//
+//        return ResponseEntity.status(HttpStatus.OK).body(dtoList);
+//    }
 }
