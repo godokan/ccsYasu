@@ -1,0 +1,48 @@
+{{>layout/header}}
+
+<link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+
+{{>layout/navbar-user}}
+
+<div class="container">
+    <div id="main-row" class="row">
+        <div id="left-side" class="col-md-1"></div>
+        <div id="main" class="col-md-10">
+            <div class="title">
+                서비스 목록
+                <a title="새로고침" class="reload" onClick="window.location.reload()"><i class="fas fa-redo-alt"></i></a>
+            </div>
+            <div class="row">
+                <div class="col-md-4 card">
+                    <div class="bordered">
+                        <h3>
+                            미니야스
+                        </h3>
+                        <img src="/images/miniYasu.png">
+                    </div>
+                </div>
+                <div class="col-md-4 card">
+                    <div class="bordered">
+                        <h3>
+                            노란하늘
+                        </h3>
+                        <img src="/images/yellowSky.png">
+                    </div>
+                </div>
+                <div class="col-md-4 card">
+                    <div class="bordered">
+                        <h3>
+                            스마트 팜
+                        </h3>
+                        <img src="/images/smartFarm.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="right-side" class="col-md-1"></div>
+    </div>
+</div>
+
+{{>layout/footer}}

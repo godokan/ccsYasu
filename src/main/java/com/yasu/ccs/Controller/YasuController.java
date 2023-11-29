@@ -66,4 +66,10 @@ public class YasuController {
         model.addAttribute("hackbon", sessionUser.getStudNum());
         return "my";
     }
+
+    @GetMapping("/releases")
+    public String releases() {
+        return "releases";
+    }
+
 }
