@@ -1,0 +1,56 @@
+{{>layout/header}}
+
+<link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+
+{{>layout/navbar-user}}
+
+<div class="container">
+    <div id="main-row" class="row">
+        <div id="left-side" class="col-md-2"></div>
+        <div id="main" class="col-md-8">
+            <div class="title" style="color: #ec971f;">
+                노란하늘
+            </div>
+            <div class="writing-list">
+                    <article>
+                        <div class="writing-data">
+                            <img src="images/yellow_sky_logo.png" style="width: 50%; height: auto;" alt="노란하늘 로고">
+                            <h3 style="font-weight:bold;">"주변 지리가 익숙하지 않은 타지에서, 긴급한 '용무'가 생긴다면 큰일이다!"</h3><hr>
+                            <h4>&nbsp;위와 같은 생각으로 출범 한 '노란하늘 프로젝트(Project : Yellow Sky)는 안드로이드 운영체제를 대상으로 공공개방화장실 위치정보 조회 서비스를 제공하는 서비스입니다.</h4>
+                            <h4>&nbsp;'노란하늘'이라는 이름은 "과로나 슬픈일을 겪는 등 큰 충격을 받아 갑자기 정신이 아득하고 어지러운 상태"를 나타내는 관용어 '하늘이 노랗다'에서 착안하여 지은 이름입니다.</h4>
+                            <br>
+                            <img src="images/YS_main.png" style="width: 50%; height: auto;" alt="노란하늘 메인페이지">
+                            <h4>&nbsp;노란하늘은 회원제로 운영되며, 간단한 회원가입 및 로그인 절차 후 위치 정보 조회, 수정, 작성을 할 수 있습니다.</h4>
+                            <h4>&nbsp;이 때, 지도를 사용하는 서비스이기 때문에 위치정보 활용 동의 여부를 물어보며, 승인하지 않을 권리가 있으나 거부 할 시 서비스 이용이 불가합니다.</h4>
+                            <h4>( 테스트 계정 아이디 및 비밀번호 : test )</h4>
+                            <img src="images/YS_markers.png" style="width: 50%; height: auto;" alt="노란하늘 접속페이지">
+                            <h4>&nbsp;로그인을 하면 다음과 같이 지도가 나옵니다. 지도의 마커를 짧게 눌러 선택하면 위치정보가 나오고, 말풍선을 눌러 수정 및 삭제를 할 수 있습니다.</h4>
+                            <h4>&nbsp;지도의 빈 곳을 길게 누르면 새 마커가 생성되고, 말품선을 누르면 해당 장소를 새롭게 추가할 수 있습니다.</h4>
+                            <h4>&nbsp;이렇게 회원제와 장소 조회/추가/수정/삭제 기능을 통해 기존의 정보를 탐색하고, 잘못된 장소나 정보는 수정/삭제 할 수 있고, 새로운 장소를 등록 할 수 있어</h4>
+                            <h4>&nbsp;유저 참여를 통해 모두가 인간의 존엄성을 잃을 위기(급한 화장실 용무)를 이겨낼 수 있는 환경을 만들어 나가게 됩니다.</h4>
+                            <hr>
+                            <h5>이 프로젝트는 '야수의 심장'으로 부터 회원가입/로그인을 비롯한 회원관리 데이터베이스 서버와 위치 정보 데이터베이스 서버 및 서버 통신을 위한 API서버를 제공받아 제작되었습니다.</h5>
+                        </div>
+                    </article>
+            </div>
+            <br>
+            <div class="title" style="color: #ec971f;">
+                노란하늘 바로가기
+            </div>
+            <div class="writing-list">
+                <article>
+                    <div class="writing-data">
+                        <a href="http://ccsyasu.cafe24.com/fileDownload/yellow-sky.apk">
+                            <img src="/images/yellowSkyDL.png" style="width: 50%;">
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div id="right-side" class="col-md-2"></div>
+    </div>
+</div>
+
+{{>layout/footer}}

@@ -72,4 +72,13 @@ public class YasuController {
         return "releases";
     }
 
+    @GetMapping("/yellowSky")
+    public String yellowSky() {
+        return "yellow-sky";
+    }
+
+    @GetMapping("/heartOfYasu")
+    public String heartOfYasu() {
+        return "heart-of-yasu";
+    }
 }
